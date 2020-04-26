@@ -50,7 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Display\" />
+    <Folder Include="Model\Characters\" />
+    <Folder Include="Model\Game Engine\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
