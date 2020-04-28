@@ -43,17 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ConsoleGameController.cs" />
+    <Compile Include="Display\ConsoleGameDisplay.cs" />
+    <Compile Include="Model\Characters\Creature.cs" />
+    <Compile Include="Model\Characters\Enemy.cs" />
+    <Compile Include="Model\Characters\Helper.cs" />
+    <Compile Include="Model\Characters\Hero.cs" />
+    <Compile Include="Model\Characters\Item.cs" />
+    <Compile Include="Model\Game Engine\Game.cs" />
+    <Compile Include="Model\Game Engine\Level.cs" />
+    <Compile Include="Model\Game Engine\Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Display\" />
-    <Folder Include="Model\Characters\" />
-    <Folder Include="Model\Game Engine\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
