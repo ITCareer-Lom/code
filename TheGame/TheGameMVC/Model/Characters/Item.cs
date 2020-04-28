@@ -8,6 +8,25 @@ namespace TheGameMVC.Model.Characters
 {
     public class Item
     {
+     [Key]
+    public int ItemId { get; set; }
+
+    [Required]
+    public string Name { get; set; }
+
+    [Required]
+    public int UpgradeValue { get; set; }
+
+     public ItemGroup Type { get; set; }
+        
+        public enum ItemGroup
+        {
+            Power =0,
+            Health = 1,
+            Gold = 2,
+            Other = 3
+        }
+        
         public class ItemGroupPower
         {
           
@@ -17,7 +36,7 @@ namespace TheGameMVC.Model.Characters
             string name = "Cannon";
             string name = "Axe";
 
-           
+           // тези предмети увеличават силата на героите
             int Sword;
             int MagicStick =  +55;
             int Gun;
@@ -33,6 +52,7 @@ namespace TheGameMVC.Model.Characters
             string name = "Herbs";
             string name = "Food";
 
+            // тези предмети увеличават здравето на героите
             int Armor;
             int MedicinalDecoction = +50;
             int Herbs = +10;
@@ -40,21 +60,25 @@ namespace TheGameMVC.Model.Characters
         }
         public class ItemGroupGold
         {
+
             string name = "Purse with Money";
             string name = "Gold";
             string name = "Silver";
 
+            // тези предмети увеличават парите на героите
             int PurseWithMoney = +200;
             int Gold = +400;
             int Silver;
         }
         public class ItemGroupOther
         {
+            //тези предмети са необхадими за убиване на някой злодей
             string name = "Holy water";
             string name = "Spike";
             string name = "Book with Magic";
 
            
         }
+    
     } 
 }
