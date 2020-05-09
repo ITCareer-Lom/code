@@ -57,9 +57,9 @@ namespace TheGameMVC.Model.Characters
         public class ItemGroupOther
         {
             //тези предмети са необхадими за убиване на някой злодей
-            string name = "Holy water";
-            string name = "Spike";
-            string name = "Book with Magic";
+            int HolyWater;
+            int Spike;
+            int BookWithMagic;
         }
     
     } 
