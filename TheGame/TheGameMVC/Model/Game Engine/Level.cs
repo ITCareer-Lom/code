@@ -12,12 +12,14 @@ namespace TheGameMVC.Model.Game_Engine
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Enemy> Enemies { get; set; }
-        // TODO същото и за Helpers
+        public List<Helpers> Helpers { get; set; }
+        
 
         public Level()
         {
             Enemies = new List<Enemy>();
-            // TODO
+            Helpers = new List<Helpers>();
+            
         }
 
         // за връзка с таблицата с картата
@@ -44,80 +46,4 @@ namespace TheGameMVC.Model.Game_Engine
             throw new NotImplementedException();
         }
     }
-    // TODO това надолу се маха, но го разнеси като имена по другите файлове и го запази някъде за после
-    public class Level1
-    {
-        int id = 1;
-        string name = "The Wonder World";
-
-        //Това са злодеите, които могат да се паднат в първо ниво 
-        string enemies = "Dragon";
-        string enemies = "Serpent";
-
-        //Това са добряците които могат да се паднат в първо ниво 
-        string helpers = "Gnome";
-        string helpers = "Elf";
-
-    }
-    public class Level2
-    {
-        int id = 2;
-        string name = "The Prisoner Grotto";
-
-        //Това са злодеите, които могат да се паднат във второ ниво 
-        string enemies = "Robber";
-        string enemies = "Nija";
-        string enemies = "Zombie";
-
-        //Това са добряците които могат да се паднат във второ ниво 
-        string helpers = "Merchant";
-        string heplers = "Wise Man";
-
-    }
-    public class Level3
-    {
-        int id = 3;
-        string name = "The Apocalypse";
-
-        //Това са злодеите, които могат да се паднат в трето ниво 
-        string enemies = "Zombie";
-        string enemies = "Vampire";
-
-
-        //Това са добряците които могат да се паднат в трето ниво 
-        string helpers = "Doctor";
-        string helpers = "Spirit";
-    }
-    public class Level4
-    {
-        int id = 4;
-        string name = "Maze of death`s marsh";
-
-        //Това са злодеите, които могат да се паднат в четвърто ниво 
-        string enemies = "Witch";
-        string enemies = "Vampire";
-
-        //Това са злодеите, които могат да се паднат в четвърто ниво 
-        string helpers = "Unicorn";
-        string helpers = "Elf";
-    }
-    public class Level5
-    {
-        int id = 5;
-        string name = "The end of the glowing vault";
-
-
-        //Това са злодеите, които могат да се паднат в пето ниво 
-        string enemies = "Robber";
-        string enemies = "Dragon";
-        string enemies = "Ninja";
-        string enemies = "Serpent";
-
-
-        //Това са злодеите, които могат да се паднат в пето ниво 
-        string helpers = "Merchant";
-        string helpers = "Gnome";
-
-    }
-   
-}
+  }
