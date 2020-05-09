@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,36 +9,26 @@ namespace TheGameMVC.Model.Characters
     public class Hero : Creature
     {
         // TODO с главни букви и да са свойства
-        //private string name; в Creature + Id
-        private int health; 
-        private int power; 
-        private int experience; 
-        private int gold;
-        // TODO List<Item>
-        private List items;
+        //private string name; в Creature + Id ??
+        private string Name{get; set; }
+        private int Health{ get; set; } 
+        private int Power{ get; set; } 
+        private int Experience{ get; set; }  
+        private int Gold{ get; set; } 
+        private List<Item> Items;
 
-        public int Power
-        {
-            get => power;
-            set => value;
-        }
-
-        public int gold
-        {
-            get => gold;
-            set => value;
-        }
+        private List<string> heroes = new List<string>();
 
        // List<string> heroes = new List<string>();
         // TODO конструктор без параметри
-        public Hero(string name,  int power, int gold, List items) 
+        public Hero() 
         {
-            this.name = name;
-            this.health = 100; 
-            this.power = power;
-            this.experience = 0;
-            this.gold = gold;
-            this.items = new List<Item>();
+            this.Name = name;
+            this.Health = 100; 
+            this.Power = power;
+            this.Experience = 0;
+            this.Gold = gold;
+            this.Items = new List<Item>();
         }
 
         public void WonVictoryOver(Creature victim)
@@ -54,7 +44,13 @@ namespace TheGameMVC.Model.Characters
             switch (Name)
             {
                 case "Knight": result = (item.Name == "Sword") || (item.Name == "Shield"); break;
-                // TODO същото за останалите типове герои
+                case "Magician": result (item.Name == "Magic wand") || (item.Name == "Holy water") || (item.Name == "Magic book"); break;
+                case "Dwarf": result = (item.Name == "Axe") || (item.Name == "Sword") || (item.Name == "Armor") || (item.Name == "Herbs"); break;
+                case "Princess": result = (item.Name == "Sword") || (item.Name == "Holy water"); break;
+                case "Villager": result = (item.Name == "Gun"); break;
+                case "Turtle": result = (item.Name == "Holy water") || (item.Name == "Food") || (item.Name == "Gold"); break;
+                case "Goddes": result = (item.Name == "Axe") || (item.Name == "Sword") || (item.Name == "Armor") || (item.Name == "Gun"); break;
+
                 default: break;
             }
             return result;
@@ -63,11 +59,29 @@ namespace TheGameMVC.Model.Characters
         public void Validate()
         {
              //да има име на валиден герой в нашата игра
-            //дали силата е до 50!
-            // TODO както в класа Map
-            Power <= 50;
-            health <= 100; 
-        }
+            foreach (var hero in heroes)
+            {
+                hero.Validate();
+            }
 
+            //дали силата е до 50!
+            if (Power.Count <= 50)
+	        {
+                return "It's okay.";
+	        }
+            else 
+	        {
+                throw new ArgumentOutOfRangeException("The hero is dead.");
+	        }
+            
+            if (Health.Count <= 100)
+	        {
+                return "It's okay.";
+	        }
+            else
+            {
+                throw new ArgumentOutOfRangeException("The hero is dead.");
+            }
+        }
     }
 }
