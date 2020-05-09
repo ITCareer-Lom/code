@@ -3,56 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheGameMVC.Model.Characters;
 
 namespace TheGameMVC.Model.Game_Engine
 {
+    // картата на нашата игра
     public class Map
     {
-        private List Levels;
-        private List Heroes;
+        public int Id { get; set; }
+        public string Name { get; set; }
 
-        public List levels{get;set;}
-        public List Heroes{get;set;}
+        // нивата в картата
+        public List<Level> Levels{ get; set; }
+        // героите, от които можем да избираме
+        public List<Hero> Heroes{get;set;}
 
         public Map()
         {
-            this.Levels = new List<Levels>();
-            this.Heroes = new List<Heroes>();
+            this.Levels = new List<Level>();
+            this.Heroes = new List<Hero>();
         }
-        void Validate() 
+
+        // проверка дали е валидна, ако не - хвърляме изключение
+        public void Validate() 
         {
-            if (Heroes <= 0)
+            //да нямаме никакви герои
+            if (Heroes.Count == 0)
 	        {
                 throw new ArgumentOutOfRangeException("There must be some heroes!");
 	        }
 
-            if (Hero.Validate() == true)
-	        {
-                return("It's okay.");
-	        }
-            else
+            //дали героите са валидни
+            foreach(var hero in Heroes)
             {
-                throw new ArgumentOutOfRangeException("Heroes are not validate!");
+                hero.Validate();
             }
-
-            if (Levels <= 0)
+            
+            //да нямаме никакви нива
+            if (Levels.Count == 0)
 	        {
                 throw new ArgumentOutOfRangeException("There must be some levels!");
 	        }
 
-            if (Level.Validate == true)
-	        {
-                return("It's okay.");
-	        }
-            else
+            //дали всяко от нивата е валидно
+            foreach (var level in Levels)
             {
-                throw new ArgumentOutOfRangeException("Levels are not validate!");
+                level.Validate();
             }
         }
-        // проверка дали е валидна, ако не - хвърляме изключение
-        //да нямаме никакви герои
-        //дали героите са валидни
-        //да нямаме никакви нива
-        //дали всяко от нивата е валидно
     }
 }

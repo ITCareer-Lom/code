@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace TheGameMVC.Model.Characters
 {
+    // Sword - меч
+    // Shield - щит
     public class Item
     {
      [Key]

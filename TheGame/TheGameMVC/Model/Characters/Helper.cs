@@ -8,5 +8,6 @@ namespace TheGameMVC.Model.Characters
 {
     public class Helper
     {
+        // TODO int HelperId
     }
 }

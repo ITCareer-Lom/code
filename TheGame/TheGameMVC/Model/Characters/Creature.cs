@@ -8,12 +8,13 @@ namespace TheGameMVC.Model.Characters
 {
     public class Creature
     {
-        string Name; // името на съществото
+        // TODO да са public и да са свойства, а не полета
+        public string Name; // името на съществото
         int Health; // здравето му
         int Power; // силата му
-        int Experience; // опита, който има
+        public int Experience; // опита, който има
         int Gold; // парите му
-        List Items; // предметите, които притежава
+        List<Item> Items; // предметите, които притежава
         string Message; // съобщението, което носи това същество
 
         public Creature(string name, int power, int experience, int gold, string message)
@@ -60,8 +61,10 @@ namespace TheGameMVC.Model.Characters
             // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
         }
 
-        bool CanHaveItem(Item item) // дали това същество може да има този предмет
-        { }
+        public virtual bool CanHaveItem(Item item) // дали това същество може да има този предмет
+        {
+            return false;
+        }
 
         void AcquireItem(Item item) // придобиваме предмет
         {

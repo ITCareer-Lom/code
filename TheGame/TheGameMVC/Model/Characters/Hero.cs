@@ -8,11 +8,13 @@ namespace TheGameMVC.Model.Characters
 {
     public class Hero : Creature
     {
-        private string name; 
+        // TODO с главни букви и да са свойства
+        //private string name; в Creature + Id
         private int health; 
         private int power; 
         private int experience; 
-        private int gold; 
+        private int gold;
+        // TODO List<Item>
         private List items;
 
         public int Power
@@ -28,7 +30,7 @@ namespace TheGameMVC.Model.Characters
         }
 
        // List<string> heroes = new List<string>();
-
+        // TODO конструктор без параметри
         public Hero(string name,  int power, int gold, List items) 
         {
             this.name = name;
@@ -46,23 +48,23 @@ namespace TheGameMVC.Model.Characters
         }
 
         //ToDo: проверка за всеки герой по отделно дали може да притежава даден предмет
-        override bool CanHaveItem(Item item)
+        public override bool CanHaveItem(Item item)
         {
-            if (CanHaveItem == true)
-	        {
-                Item.Add(Item);
-	        }
-            else 
+            var result = false;
+            switch (Name)
             {
-                throw new ArgumentOutOfRangeException("You can't have this item!");
+                case "Knight": result = (item.Name == "Sword") || (item.Name == "Shield"); break;
+                // TODO същото за останалите типове герои
+                default: break;
             }
+            return result;
         }
 
-        void Validate()
+        public void Validate()
         {
              //да има име на валиден герой в нашата игра
             //дали силата е до 50!
-
+            // TODO както в класа Map
             Power <= 50;
             health <= 100; 
         }

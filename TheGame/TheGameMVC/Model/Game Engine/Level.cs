@@ -3,29 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheGameMVC.Model.Characters;
 
 namespace TheGameMVC.Model.Game_Engine
 {
     public class Level
     {
-        int id = 1;
-        int id = 2;
-        int id = 3;
-        int id = 4;
-        int id = 5;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<Enemy> Enemies { get; set; }
+        // TODO същото и за Helpers
+
+        public Level()
+        {
+            Enemies = new List<Enemy>();
+            // TODO
+        }
+
+        // за връзка с таблицата с картата
+        public int MapId { get; set; }
+        public virtual Map Map { get; set; }
 
         //опитът, които е нужен за минаване на нивата
-        int ExperienceNeededToPass()
+        public int ExperienceNeededToPass()
         {
-            100 * id;
+            var result = 100 * Id;
+            return result;
         }
 
         //проверяваме дали нивото е завършено 
-        bool IsCompleted(Hero hero) => hero.Experience >= ExperienceNeededToPass();
+        public bool IsCompleted(Hero hero)
+        {
+            var result = hero.Experience >= ExperienceNeededToPass();
+            return result;
+        }
 
-
-
+        public void Validate()
+        {
+            // TODO да има поне един злодей
+            throw new NotImplementedException();
+        }
     }
+    // TODO това надолу се маха, но го разнеси като имена по другите файлове и го запази някъде за после
     public class Level1
     {
         int id = 1;
