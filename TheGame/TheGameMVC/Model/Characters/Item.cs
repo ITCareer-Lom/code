@@ -40,7 +40,6 @@ namespace TheGameMVC.Model.Characters
         }
         public class ItemGroupHealth
         {
-           
             // тези предмети увеличават здравето на героите
             int Armor;
             int MedicinalDecoction = +50;
