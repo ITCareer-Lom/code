@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheGameMVC.Display;
 using TheGameMVC.Model;
+using TheGameMVC.Model.Game_Engine;
 
 namespace TheGameMVC.Controller
 {
@@ -20,72 +21,71 @@ namespace TheGameMVC.Controller
         {
             //създаваме модела game със тази карта
             game = new Game(map);
-
             //създаваме display с този модел game
-            display = new Display();
+            display = new GameDisplay();
+            // коя карта е заредена
+            display.MapLoaded(game.Map);
 
-            // display: коя карта е заредена
-            display.MapLoaded(this.map);
+            // избор на герой
+            game.MyHero = display.SelectHero();
 
-            //display: избор на герой
-            display.SelectHero();
-
-            //game: играта започва
+            // играта започва
             game.Started();
 
             //повтаряме докато не приключи играта:
-            while (game.IsCompleted() == false && game.IsOver() == false)
+            while (!game.IsCompleted() && !game.IsOver())
             {
-                //display: съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
+                // съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
                 display.ShowLevel();
 
                 //повтаряме докато състоянието на играта е Playing
-                while (game.GameState == 1) //по - късно трябва да се замести е enum
+                while (game.State == GameState.Playing) 
                 {
-                    //няма такъв метод//game: преминаваме на следващ ход, ако можем(т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла
+                    //няма такъв метод//game: преминаваме на следващ ход, ако можем(т.е.ако не сме убити, 
+                    // ако не сме завършили и т.н.), иначе прекъсва цикъла
+                    if (!game.NextMove()) break; 
 
-                    //display: оповестяваме на кой ход от играта сме
+                    // оповестяваме на кой ход от играта сме
                     display.ShowMove();
 
-                    //HELP //game: проверяваме CanSelectMove - дали ходът е Съдба или Избор
+                    // проверяваме CanSelectMove - дали ходът е Съдба или Избор
+                    var canSelect = game.CanSelectMove;
 
-                    //display: извежда дали сме ход Съдба или ход Избор
+                    // извежда дали сме ход Съдба или ход Избор
                     display.ShowMove();
 
-                    //???? // ако сме на ход избор:   //не знам как рзбираме че е избор ХЕЛП
-
-                    if (true)
+                    // ако сме на ход избор: 
+                    if (canSelect)
                     {
-                        //display: избираме с кой искаме да се срещнем
-                        //game: записваме кой е нашия Opponent
+                        // избираме с кой искаме да се срещнем и записваме кой е нашия Opponent
                         game.Opponent = display.SelectOpponent();
-
-                        //display: показва ни характеристиките на който ни е избран за противник
-                        display.ShowOpponent(game.Opponent);
-
-                        //display: избираме какво действие ще извърши нашия герой
-                        HeroActionType action = display.SelectHeroAction();
-
-                        //???? //display: съобщаваме какво действие ще се извърши, срещу кого и т.н.
-
-                        //game: изиграваме хода и определяме какъв е резултата
-                        bool success = game.Play(action);
-
-                        //display: съобщаваме резултата от играта //AMI NE E HUBAVO OPISANO
-                        display.ShowHeroActionResult(action, game.Opponent, success);//NE ZNAM
-
-                        //display: съобщава характеристиките на героя
-                        display.ShowHero();
                     }
+                    // показва ни характеристиките на който ни е избран за противник
+                    display.ShowOpponent(game.Opponent);
+
+                    // избираме какво действие ще извърши нашия герой
+                    HeroActionType action = display.SelectHeroAction();
+
+                    // съобщаваме какво действие ще се извърши, срещу кого и т.н.
+                    display.ShowHeroAction(action, game.Opponent);
+
+                    // изиграваме хода и определяме какъв е резултата
+                    bool success = game.Play(action);
+
+                    // съобщаваме резултата от играта 
+                    display.ShowHeroActionResult(action, game.Opponent, success);
+
+                    // съобщава новите характеристики на героя
+                    display.ShowHero();
                 }
 
                 //ако състоянието е LevelCompleted:
                 if (game.GameState == 2) //по - късно трябва да се замести е enum
                 {
-                    //display: съобщаваме, че е преминато нивото
+                    // съобщаваме, че е преминато нивото
                     display.LevelFinished(game.CurrentLevel);
 
-                    //game: преминаваме на следващо ниво
+                    // преминаваме на следващо ниво
                     game.NextLevel();
                 }
 
@@ -94,13 +94,16 @@ namespace TheGameMVC.Controller
                 {
                     //display: играта завърши със загуба
                     display.GameOver();
+                    break;
                 }
 
                 //ако game.State e GameStopped
                 else if (game.GameState == 4) //по - късно трябва да се замести е enum
                 {
+                    // TODO или с прихващане на exception или с обработка на избора
                     //display: играта е прекъсната
                     display.GameStopped();
+                    break;
                 }
 
                 //ако game.State e GameCompleted

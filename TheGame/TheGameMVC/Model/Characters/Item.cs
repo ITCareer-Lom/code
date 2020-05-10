@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace TheGameMVC.Model.Characters
 {
+    public enum ItemGroup
+    {
+        Power = 0,
+        Health = 1,
+        Gold = 2,
+        Other = 3
+    }
+
     // Sword - меч
     // Shield - щит
     public class Item
     {
      [Key]
-    public int ItemId { get; set; }
+    public int Id { get; set; }
 
     [Required]
     public string Name { get; set; }
@@ -19,16 +27,8 @@ namespace TheGameMVC.Model.Characters
     [Required]
     public int UpgradeValue { get; set; }
 
-     public ItemGroup Type { get; set; }
+     public ItemGroup Type { get; set; } // HELP да го махна ли? според мен е нужно FIXME махни това
         
-        public enum ItemGroup
-        {
-            Power =0,
-            Health = 1,
-            Gold = 2,
-            Other = 3
-        }
-      
         public class ItemGroupPower
         {
             // тези предмети увеличават силата на героите

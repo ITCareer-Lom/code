@@ -30,7 +30,7 @@ namespace TheGameMVC.Model.Characters
 
         bool IsDead() // дали е умрял
         {
-            Health <= 0;
+            Health <= 0;  // FIXME добави return, и надолу има такива
         }
 
         bool IsVictimOf(Creature attacker) // дали може да бъде победен от друг
@@ -38,10 +38,9 @@ namespace TheGameMVC.Model.Characters
             Health <= attacker.Power;
         }
 
-        void WonVictoryOver(Creature victim) // какво става като победи друг            
+        public virtual void WonVictoryOver(Creature victim) // какво става като победи друг            
         {
             Gold += victim.Gold;
-            Experience += victim.Experience;
             AcquireItem(victim.Items);
             // взима Gold, Experience и Items(с AcquireItem и LoseItem) на victim
         }

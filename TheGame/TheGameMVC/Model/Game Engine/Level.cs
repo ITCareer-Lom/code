@@ -12,21 +12,21 @@ namespace TheGameMVC.Model.Game_Engine
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Enemy> Enemies { get; set; }
-        public List<Helpers> Helpers { get; set; }
-        
-
-        public Level()
-        {
-            Enemies = new List<Enemy>();
-            Helpers = new List<Helpers>();
-            
-        }
+        public List<Helper> Helpers { get; set; }
 
         // за връзка с таблицата с картата
         public int MapId { get; set; }
         public virtual Map Map { get; set; }
 
-        //опитът, които е нужен за минаване на нивата
+        public Level()
+        {
+            this.Id = 0;
+            this.Name = "";
+            Enemies = new List<Enemy>();
+            Helpers = new List<Helper>();
+        }
+
+        //опитът, които е нужен за минаване на нивото
         public int ExperienceNeededToPass()
         {
             var result = 100 * Id;
@@ -42,8 +42,9 @@ namespace TheGameMVC.Model.Game_Engine
 
         public void Validate()
         {
-            // TODO да има поне един злодей
-            throw new NotImplementedException();
+            // да има поне един злодей
+            if (Enemies.Count == 0)
+                throw new ArgumentOutOfRangeException("Level must contain at least one enemy");
         }
     }
   }
