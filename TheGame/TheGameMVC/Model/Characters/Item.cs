@@ -8,6 +8,19 @@ namespace TheGameMVC.Model.Characters
 {
     // Sword - меч
     // Shield - щит
+    //Gun - меч 
+    //Magic Stick - магическа пръчка 
+    //Axe - брадва 
+    //Food - храна
+    //Herbs - билки 
+    //Armor - броня
+    //Medicinal Decoction - лечебна отвара
+    //Purse with money - кисия с пари 
+    // Gold - злато
+    //Silver - сребро
+    //Holy Water - светена вода 
+    //Spike - острие 
+    // Book with magic - книга с магии
     public class Item
     {
      [Key]
@@ -28,39 +41,5 @@ namespace TheGameMVC.Model.Characters
             Gold = 2,
             Other = 3
         }
-      
-        public class ItemGroupPower
-        {
-            // тези предмети увеличават силата на героите
-            int Sword;
-            int MagicStick =  +55;
-            int Gun;
-            int Sheild = +65;
-            int Axe = +70;
-        }
-        public class ItemGroupHealth
-        {
-            // тези предмети увеличават здравето на героите
-            int Armor;
-            int MedicinalDecoction = +50;
-            int Herbs = +10;
-            int Food = +25;
-        }
-        public class ItemGroupGold
-        {
-
-            // тези предмети увеличават парите на героите
-            int PurseWithMoney = +200;
-            int Gold = +400;
-            int Silver;
-        }
-        public class ItemGroupOther
-        {
-            //тези предмети са необхадими за убиване на някой злодей
-            int HolyWater;
-            int Spike;
-            int BookWithMagic;
-        }
-    
     } 
 }
