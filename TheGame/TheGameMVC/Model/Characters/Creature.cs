@@ -8,14 +8,13 @@ namespace TheGameMVC.Model.Characters
 {
     public class Creature
     {
-        // TODO да са public и да са свойства, а не полета
-        public string Name; // името на съществото
-        int Health; // здравето му
-        int Power; // силата му
-        public int Experience; // опита, който има
-        int Gold; // парите му
-        List<Item> Items; // предметите, които притежава
-        string Message; // съобщението, което носи това същество
+        public string Name { get; set; } // името на съществото
+        public int Health { get; set; } // здравето му
+        public int Power { get; set; } // силата му
+        public int Experience { get; set; } // опита, който има
+        public int Gold { get; set; } // парите му
+        public List<Item> Items { get ; set; }  // предметите, които притежава
+        public string Message { get; set; } // съобщението, което носи това същество
 
         public Creature(string name, int power, int experience, int gold, string message)
         {
@@ -30,20 +29,22 @@ namespace TheGameMVC.Model.Characters
 
         bool IsDead() // дали е умрял
         {
-            Health <= 0;
+            return Health <= 0;
         }
 
         bool IsVictimOf(Creature attacker) // дали може да бъде победен от друг
         {
-            Health <= attacker.Power;
+            return Health <= attacker.Power;
         }
 
-        void WonVictoryOver(Creature victim) // какво става като победи друг            
+        public virtual void WonVictoryOver(Creature victim) // какво става като победи друг            
         {
             Gold += victim.Gold;
-            Experience += victim.Experience;
-            AcquireItem(victim.Items);
-            // взима Gold, Experience и Items(с AcquireItem и LoseItem) на victim
+            foreach (Item item in victim.Items)
+            {
+                AcquireItem(item);
+            }
+            //TODO взима Gold, Experience и Items(с AcquireItem и LoseItem) на victim
         }
 
         void Fight(Creature opponent)
@@ -52,16 +53,16 @@ namespace TheGameMVC.Model.Characters
             {
                 opponent.Health -= Power; // бием се с някой намалява victim.Health със нашия Power 
             }
-            // WonVictoryOver(opponent); за победителя викаме WonVictoryOver()
+            //TODO WonVictoryOver(opponent); за победителя викаме WonVictoryOver()
         }
 
-        void Deal(Creature seller) // търгуваме с някой         
+        void Deal(Creature seller) //TODO търгуваме с някой         
         {
             // намали нашия Gold (ако сме направили покупка)
             // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
         }
 
-        public virtual bool CanHaveItem(Item item) // дали това същество може да има този предмет
+        public virtual bool CanHaveItem(Item item) //TODO дали това същество може да има този предмет
         {
             return false;
         }
@@ -71,23 +72,23 @@ namespace TheGameMVC.Model.Characters
             if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
             {
                 Items.Add(item); // добавя се към нашите Items
-                // увеличава нашите Health, Power, Gold
+                //TODO увеличава нашите Health, Power, Gold
+                //TODO Може да намали нашия Gold(ако сме направили покупка)
             }
             else
             {
                 throw new ArgumentException("You can't have this item!");
                 // (може и да не можем! - тогава хвърляме изключение или връщаме false)
             }
-            // Може да намали нашия Gold(ако сме направили покупка)
         }
 
         void LoseItem(Item item) // разделяме се с предмет
         {
-            // намалява нашите Health, Power, Gold
+            //TODO намалява нашите Health, Power, Gold
             Items.Remove(item); // изтрива се от нашите Items
         }
 
-        void Validate()
+        void Validate() //TODO
         {
             // проверка дали е валидно, ако не - хвърляме изключение
             // да има име на съществото и то да е валидно име за играта

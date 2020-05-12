@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ConsoleGameController.cs" />
-    <Compile Include="Display\ConsoleGameDisplay.cs" />
+    <Compile Include="Display\GameDisplay.cs" />
     <Compile Include="Model\Characters\Creature.cs" />
     <Compile Include="Model\Characters\Enemy.cs" />
     <Compile Include="Model\Characters\Helper.cs" />
