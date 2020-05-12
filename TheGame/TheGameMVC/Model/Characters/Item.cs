@@ -40,6 +40,7 @@ namespace TheGameMVC.Model.Characters
             Health = 1,
             Gold = 2,
             Other = 3
+       
         }
     } 
 }
