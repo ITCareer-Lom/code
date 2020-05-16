@@ -16,6 +16,8 @@ namespace TheGameMVC.Model.Characters
         public List<Item> Items { get ; set; }  // предметите, които притежава
         public string Message { get; set; } // съобщението, което носи това същество
 
+        public Creature() { }
+
         public Creature(string name, int power, int experience, int gold, string message)
         {
             Name = name;
