@@ -8,27 +8,9 @@ namespace TheGameMVC.Model.Characters
 {
     public class Hero : Creature
     {
-        // FIXME тези са за Creature и public
-        private string Name{get; set; }
-        private int Health{ get; set; } 
-        private int Power{ get; set; } 
-        private int Experience{ get; set; }  
-        private int Gold{ get; set; } 
-        private List<Item> Items;
-
-        // FIXME тези са за Map и public
-        private List<string> heroes = new List<string>();
-
-        // TODO конструктор без параметри
-        public Hero() 
-        {
-            // FIXME тези са за Creature 
-            this.Name = name;
-            this.Health = 100; 
-            this.Power = power;
-            this.Experience = 0;
-            this.Gold = gold;
-            this.Items = new List<Item>();
+        // конструктор без параметри
+        public Hero()
+        {         
         }
 
         // победили сме някакъв противник
@@ -45,19 +27,32 @@ namespace TheGameMVC.Model.Characters
             var result = false;
             switch (Name)
             {
-                case "Knight": result = (item.Name == "Sword") || 
-                                        (item.Name == "Shield"); break;
-                case "Magician": result = (item.Name == "Magic wand") || 
-                                          (item.Name == "Holy water") || 
-                                          (item.Name == "Magic book"); break;
-                case "Dwarf": result = (item.Name == "Axe") || 
-                                       (item.Name == "Sword") || 
-                                       (item.Name == "Armor") || 
-                                       (item.Name == "Herbs"); break;
-                case "Princess": result = (item.Name == "Sword") || (item.Name == "Holy water"); break;
-                case "Villager": result = (item.Name == "Gun"); break;
-                case "Turtle": result = (item.Name == "Holy water") || (item.Name == "Food") || (item.Name == "Gold"); break;
-                case "Goddes": result = (item.Name == "Axe") || (item.Name == "Sword") || (item.Name == "Armor") || (item.Name == "Gun"); break;
+                case "Knight":
+                    result = (item.Name == "Sword") ||
+                             (item.Name == "Shield"); break;
+                case "Magician":
+                    result = (item.Name == "Magic wand") ||
+                             (item.Name == "Holy water") ||
+                             (item.Name == "Magic book"); break;
+                case "Dwarf":
+                    result = (item.Name == "Axe") ||
+                             (item.Name == "Sword") ||
+                             (item.Name == "Armor") ||
+                             (item.Name == "Herbs"); break;
+                case "Princess":
+                    result = (item.Name == "Sword") || 
+                             (item.Name == "Holy water"); break;
+                case "Villager":
+                    result = (item.Name == "Gun"); break;
+                case "Turtle":
+                    result = (item.Name == "Holy water") || 
+                             (item.Name == "Food") ||
+                             (item.Name == "Gold"); break;
+                case "Goddes":
+                    result = (item.Name == "Axe") ||
+                             (item.Name == "Sword") || 
+                             (item.Name == "Armor") || 
+                             (item.Name == "Gun"); break;
 
                 default: break;
             }
@@ -66,17 +61,17 @@ namespace TheGameMVC.Model.Characters
 
         public void Validate()
         {
-             //да има име на валиден герой в нашата игра
+            //да има име на валиден герой в нашата игра
             foreach (var hero in heroes)
             {
                 hero.Validate();
             }
 
             //дали силата е до 50!
-            if (Power <= 0 || Power > 50) 
-	        {
+            if (Power <= 0 || Power > 50)
+            {
                 throw new ArgumentOutOfRangeException("Power have to be in range (0, 50]");
-	        }
+            }
 
 
             if (Health <= 0 || Health > 100)
