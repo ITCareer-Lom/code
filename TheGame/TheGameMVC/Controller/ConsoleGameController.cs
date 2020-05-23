@@ -37,12 +37,10 @@ namespace TheGameMVC.Controller
             {
                 // съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
                 display.ShowLevel();
-
                 //повтаряме докато състоянието на играта е Playing
                 while (game.State == GameState.Playing) 
                 {
-                    //няма такъв метод//game: преминаваме на следващ ход, ако можем(т.е.ако не сме убити, 
-                    // ако не сме завършили и т.н.), иначе прекъсва цикъла
+                    //преминаваме на следващ ход, ако можем(т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла
                     if (!game.NextMove()) break; 
 
                     // оповестяваме на кой ход от играта сме
@@ -80,7 +78,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако състоянието е LevelCompleted:
-                if (game.GameState == 2) //по - късно трябва да се замести е enum
+                if (game.GameState == GameState.LevelCompleted)
                 {
                     // съобщаваме, че е преминато нивото
                     display.LevelFinished(game.CurrentLevel);
@@ -90,7 +88,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameOver
-                else if (game.GameState == 3) //по - късно трябва да се замести е enum
+                else if (game.GameState == GameState.GameOver)
                 {
                     //display: играта завърши със загуба
                     display.GameOver();
@@ -98,7 +96,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameStopped
-                else if (game.GameState == 4) //по - късно трябва да се замести е enum
+                else if (game.GameState == GameState.GameStopped)
                 {
                     // TODO или с прихващане на exception или с обработка на избора
                     //display: играта е прекъсната
@@ -107,7 +105,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameCompleted
-                else if (game.GameState == 5) //по - късно трябва да се замести е enum
+                else if (game.GameState == GameState.GameCompleted) 
                 {
                     //display: играта завърши с победа
                     display.GameCompleted();
