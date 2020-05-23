@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheGameMVC.Model.Characters
 {
-    public class Helper
+    public class Helper // цветелин
     {
         // TODO int HelperId
     }

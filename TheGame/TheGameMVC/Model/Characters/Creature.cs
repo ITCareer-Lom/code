@@ -8,36 +8,18 @@ namespace TheGameMVC.Model.Characters
 {
     public class Creature
     {
-        // добавих ги от класа Hero и ги направих public
-        // FIXME тези са за Creature и public
-        public string Name { get; set; }
-        public int Health { get; set; }
-        public int Power { get; set; }
-        public int Experience { get; set; }
-        public int Gold { get; set; }
-        public List<Item> Items;
+        public string Name { get; set; } // името на съществото
+        public int Health { get; set; } // здравето му
+        public int Power { get; set; } // силата му
+        public int Experience { get; set; } // опита, който има
+        public int Gold { get; set; } // парите му
+        public List<Item> Items { get; set; }  // предметите, които притежава
+        public string Message { get; set; } // съобщението, което носи това същество
 
-        // тези са старите, няма да ги махам, човека, който пише кода за creatures при добра воля да ги оправи :D
-        string Name; // името на съществото
-        int Health; // здравето му
-        int Power; // силата му
-        int Experience; // опита, който има
-        int Gold; // парите му
-        List Items; // предметите, които притежава
-        string Message; // съобщението, което носи това същество
+        public Creature() : this("", 0, 0, 0, "") { }
 
-       //FIXME
         public Creature(string name, int power, int experience, int gold, string message)
         {
-            // добавих ги от класа Hero
-            // FIXME тези са за Creature 
-            this.Name = name;
-            this.Health = 100;
-            this.Power = power;
-            this.Experience = 0;
-            this.Gold = gold;
-            this.Items = new List<Item>();
-
             Name = name;
             Health = 100;
             Power = power;
@@ -49,62 +31,68 @@ namespace TheGameMVC.Model.Characters
 
         bool IsDead() // дали е умрял
         {
-            Health <= 0;
-        }
-
-        bool IsVictimOf(Creature attacker) // дали може да бъде победен от друг
-        {
-            Health <= attacker.Power;
+            return Health <= 0;
         }
 
         public virtual void WonVictoryOver(Creature victim) // какво става като победи друг            
         {
             Gold += victim.Gold;
-            Experience += victim.Experience;
-            AcquireItem(victim.Items);
-            // взима Gold, Experience и Items(с AcquireItem и LoseItem) на victim
+            victim.Gold = 0;
+            foreach (Item item in victim.Items)
+            {
+                if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
+                {
+                    AcquireItem(item);
+                    victim.LoseItem(item);
+                }
+            }
         }
 
-        void Fight(Creature opponent)
+        public bool Fight(Creature opponent)
         {
-            while (opponent.Health > 0 && Health > 0) // това продължава, докато един от двамата не умре 
+            while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
             {
                 opponent.Health -= Power; // бием се с някой намалява victim.Health със нашия Power 
+                Health -= opponent.Power;
             }
-            // WonVictoryOver(opponent); за победителя викаме WonVictoryOver()
+            var success = Health > 0;
+            if(success) // за победителя викаме WonVictoryOver()
+                WonVictoryOver(opponent);
+            else opponent.WonVictoryOver(this);
+            return success;
         }
 
-        void Deal(Creature seller) // търгуваме с някой         
+        public bool Deal(Creature seller) //TODO търгуваме с някой         
         {
             // намали нашия Gold (ако сме направили покупка)
+            // преглеждаме дали има предмети които можем да притежаваме
             // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
+            return false;
         }
 
-        public virtual bool CanHaveItem(Item item) // дали това същество може да има този предмет
-        { }
+        public virtual bool CanHaveItem(Item item) //TODO дали това същество може да има този предмет
+        {
+            return false;
+        }
 
         void AcquireItem(Item item) // придобиваме предмет
         {
-            if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
+            Items.Add(item); // добавя се към нашите Items
+            switch(item.Type)
             {
-                Items.Add(item); // добавя се към нашите Items
-                // увеличава нашите Health, Power, Gold
+                case ItemType.Health: Health += item.UpgradeValue; break;
+                //TODO увеличава нашите Health, Power, Gold
             }
-            else
-            {
-                throw new ArgumentException("You can't have this item!");
-                // (може и да не можем! - тогава хвърляме изключение или връщаме false)
-            }
-            // Може да намали нашия Gold(ако сме направили покупка)
+            //TODO Може да намали нашия Gold(ако сме направили покупка)
         }
 
         void LoseItem(Item item) // разделяме се с предмет
         {
-            // намалява нашите Health, Power, Gold
+            //TODO намалява нашите Health, Power, Gold
             Items.Remove(item); // изтрива се от нашите Items
         }
 
-        void Validate()
+        void Validate() //TODO
         {
             // проверка дали е валидно, ако не - хвърляме изключение
             // да има име на съществото и то да е валидно име за играта

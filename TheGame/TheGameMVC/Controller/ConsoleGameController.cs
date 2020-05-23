@@ -25,6 +25,7 @@ namespace TheGameMVC.Controller
             display = new GameDisplay();
             // коя карта е заредена
             display.MapLoaded(game.Map);
+            game.Map.Validate();
 
             // избор на герой
             game.MyHero = display.SelectHero();
@@ -35,8 +36,9 @@ namespace TheGameMVC.Controller
             //повтаряме докато не приключи играта:
             while (!game.IsCompleted() && !game.IsOver())
             {
+                game.LoadLevel();
                 // съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
-                display.ShowLevel();
+                display.ShowLevel(game.CurrentLevel);
                 //повтаряме докато състоянието на играта е Playing
                 while (game.State == GameState.Playing) 
                 {
@@ -44,13 +46,13 @@ namespace TheGameMVC.Controller
                     if (!game.NextMove()) break; 
 
                     // оповестяваме на кой ход от играта сме
-                    display.ShowMove();
+                    display.ShowMove(game.MoveNo);
 
                     // проверяваме CanSelectMove - дали ходът е Съдба или Избор
                     var canSelect = game.CanSelectMove;
 
                     // извежда дали сме ход Съдба или ход Избор
-                    display.ShowMove();
+                    display.ShowMove(game.CanSelectMove);
 
                     // ако сме на ход избор: 
                     if (canSelect)
@@ -72,13 +74,13 @@ namespace TheGameMVC.Controller
 
                     // съобщаваме резултата от играта 
                     display.ShowHeroActionResult(action, game.Opponent, success);
-
+                    
                     // съобщава новите характеристики на героя
-                    display.ShowHero();
+                    display.ShowHero(game.MyHero);
                 }
 
                 //ако състоянието е LevelCompleted:
-                if (game.GameState == GameState.LevelCompleted)
+                if (game.State == GameState.LevelCompleted)
                 {
                     // съобщаваме, че е преминато нивото
                     display.LevelFinished(game.CurrentLevel);
@@ -88,7 +90,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameOver
-                else if (game.GameState == GameState.GameOver)
+                else if (game.State == GameState.GameOver)
                 {
                     //display: играта завърши със загуба
                     display.GameOver();
@@ -96,7 +98,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameStopped
-                else if (game.GameState == GameState.GameStopped)
+                else if (game.State == GameState.GameStopped)
                 {
                     // TODO или с прихващане на exception или с обработка на избора
                     //display: играта е прекъсната
@@ -105,7 +107,7 @@ namespace TheGameMVC.Controller
                 }
 
                 //ако game.State e GameCompleted
-                else if (game.GameState == GameState.GameCompleted) 
+                else if (game.State == GameState.GameCompleted) 
                 {
                     //display: играта завърши с победа
                     display.GameCompleted();

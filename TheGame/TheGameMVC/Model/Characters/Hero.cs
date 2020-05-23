@@ -9,7 +9,7 @@ namespace TheGameMVC.Model.Characters
     public class Hero : Creature
     {
         // конструктор без параметри
-        public Hero()
+        public Hero() : base()
         {         
         }
 
@@ -61,12 +61,6 @@ namespace TheGameMVC.Model.Characters
 
         public void Validate()
         {
-            //да има име на валиден герой в нашата игра
-            foreach (var hero in heroes)
-            {
-                hero.Validate();
-            }
-
             //дали силата е до 50!
             if (Power <= 0 || Power > 50)
             {
@@ -74,9 +68,9 @@ namespace TheGameMVC.Model.Characters
             }
 
 
-            if (Health <= 0 || Health > 100)
+            if (Health != 100)
             {
-                throw new ArgumentOutOfRangeException("Health have to be in range (0, 100]");
+                throw new ArgumentOutOfRangeException("Health have to be 100");
             }
         }
     }

@@ -8,7 +8,7 @@ namespace TheGameMVC.Model.Characters
 {
     // Dragon - дракон
     // и т.н. за останалите
-    public class Enemy
+    public class Enemy // Ивелин
     {
         // TODO int LevelId
     }

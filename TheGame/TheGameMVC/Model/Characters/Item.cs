@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace TheGameMVC.Model.Characters
 {
+    public enum ItemType
+    {
+        Power = 0,
+        Health = 1,
+        Gold = 2,
+        Other = 3
+
+    }
+
     // Sword - меч
     // Shield - щит
     //Gun - меч 
     //Magic Stick - магическа пръчка 
-    //Axe - брадва 
+    //Axe - брадва  - Увеличава силата с 70
     //Food - храна
     //Herbs - билки 
     //Armor - броня
@@ -23,24 +32,9 @@ namespace TheGameMVC.Model.Characters
     // Book with magic - книга с магии
     public class Item
     {
-     [Key]
-    public int ItemId { get; set; }
-
-    [Required]
-    public string Name { get; set; }
-
-    [Required]
-    public int UpgradeValue { get; set; }
-
-     public ItemGroup Type { get; set; }
-        
-        public enum ItemGroup
-        {
-            Power =0,
-            Health = 1,
-            Gold = 2,
-            Other = 3
-       
-        }
+        public int ItemId { get; set; }
+        public string Name { get; set; }
+        public int UpgradeValue { get; set; }
+        public ItemType Type { get; set; }        
     } 
 }

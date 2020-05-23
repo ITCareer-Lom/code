@@ -12,14 +12,80 @@ namespace TheGameMVC.Display
     {
         public Game Game { get; set; }
 
-        internal void MapLoaded(object map)
+        public void MapLoaded(Map map)
+        {
+            Console.WriteLine("Заредена е карта "  + map.Name );
+        }
+
+        public Hero SelectHero()
+        {
+            return null;
+        }
+
+        internal void ShowLevel(Level level)
         {
             throw new NotImplementedException();
         }
 
-        internal Hero SelectHero()
+        internal void ShowMove(int moveNo)
         {
-            return null;
+            throw new NotImplementedException();
+        }
+
+        internal void ShowMove(bool canSelectMove)  // ако е true, e Избор, иначе е Съдба
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Creature SelectOpponent()
+        {
+            // HELP
+            throw new NotImplementedException();
+        }
+
+        internal void ShowOpponent(Creature opponent)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal HeroActionType SelectHeroAction()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ShowHeroAction(HeroActionType action, Creature opponent)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void ShowHero(Hero myHero)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void LevelFinished(Level currentLevel)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GameOver()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GameStopped()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void GameCompleted()
+        {
+            throw new NotImplementedException();
         }
     }
 }
