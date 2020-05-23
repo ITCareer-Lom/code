@@ -30,9 +30,9 @@ namespace TheGameMVC.Model.Game_Engine
         public Map Map { get; set; } // картата, която е заредена в играта
         public Hero MyHero { get; set; } // нашия герой
         public bool CanSelectMove { get; set; } // дали ходът е Съдба или Избор
-        public int LevelNo { get; private set; } // TODO номера на нивото в картата
+        public int LevelNo { get; private set; } // номера на нивото в картата
         public int MoveNo { get; private set; } //
-        public Level CurrentLevel { get; private set; } // TODO кое от всичките Нива в момента сме, с get ни връща някой от нивата в картата
+        public Level CurrentLevel { get; private set; } // кое от всичките Нива в момента сме, с get ни връща някой от нивата в картата
         public Creature Opponent { get; set; } // с кой сме се срещнали в момента
         public GameState State { get; set; } // в какво състояние е играта в момента
 
@@ -42,18 +42,32 @@ namespace TheGameMVC.Model.Game_Engine
             State = GameState.NotStarted;
         }
 
-        internal void Started() // TODO
+        internal void Started()
         {
             Validate(); // играта започва извикваме Validate
             // определяме CanSelectMove дали началният ход е Съдба или Избор
-            // активното ниво е първото ниво от картата
-            LevelNo = 1;
-            // състоянето на играта е Playing
-            State = GameState.Playing;
+            Random rnd = new Random();
+            CanSelectMove = rnd.Next(2) == 1;
+            LevelNo = 1; // активното ниво е първото ниво от картата            
+            State = GameState.Playing; // състоянето на играта е Playing
         }
 
-        public bool NextMove() // TODO преминаваме на следващ ход, ако можем(т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла
+        public bool NextMove() /* преминаваме на следващ ход, ако можем
+            (т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла*/
         {
+            if (MyHero.Health == 0)
+                State = GameState.GameOver;
+            else if (CurrentLevel.IsCompleted(MyHero) && LastLevel())
+                State = GameState.GameCompleted;
+            else if (CurrentLevel.IsCompleted(MyHero) && !LastLevel())
+                State = GameState.LevelCompleted;
+            else if (State == GameState.Playing)
+            {
+                MoveNo++;
+                CanSelectMove = !CanSelectMove;
+                OpponentSelection();
+                return true;
+            }
             return false;
         }
 
@@ -62,7 +76,7 @@ namespace TheGameMVC.Model.Game_Engine
             return false;
         }
 
-        public bool Play(HeroActionType action) // TODO изиграваме хода и определяме какъв е резултата
+        public bool Play(HeroActionType action) // изиграваме хода и определяме какъв е резултата
         {
             bool success = true;
             switch (action)
@@ -79,29 +93,53 @@ namespace TheGameMVC.Model.Game_Engine
             return success;
         }
 
-        public bool NextLevel() // TODO преминаваме на следващо ниво(и връща дали е възможно)
+        public bool NextLevel() // преминаваме на следващо ниво(и връща дали е възможно)
         {
-            return false;
+            if (!LastLevel() && CurrentLevel.IsCompleted(MyHero))
+            {
+                LevelNo++;
+                CurrentLevel.Id++;
+                State = GameState.Playing;
+            }
+            else
+                State = GameState.GameCompleted;
+            return !LastLevel() && CurrentLevel.IsCompleted(MyHero);
         }
 
-        void Validate() // TODO проверка дали е валидна, ако не - хвърляме изключение 
+        void Validate() // проверка дали е валидна, ако не - хвърляме изключение 
         {
-            // да имаме избран герой 
+            if (MyHero == null) // да имаме избран герой 
+            {
+                State = GameState.NotStarted;
+                throw new ArgumentNullException("No Hero selected.");
+            }
         }
 
-        public void LoadLevel()
+        public void LoadLevel() // и ти трябва опит 100 * нивото за да преминеш нивото
         {
-            MyHero.Experience = 0; // TODO и ти трябва опит 100 * нивото за да преминеш нивото
+            MyHero.Experience = 0; 
+            CurrentLevel.ExperienceNeededToPass();
+        }
+        
+        public bool IsCompleted() // играта завършва с победа ако е завършено последното ниво
+        {
+            if (LastLevel() && CurrentLevel.IsCompleted(MyHero))
+                return State == GameState.GameCompleted;
+            else
+                return false;
         }
 
-        public bool IsCompleted() // TODO играта завършва с победа ако е завършено последното ниво
+        public bool IsOver() // играта завършва със загуба ако героят ни умре
         {
-            return State == GameState.GameCompleted;
+            if (MyHero.Health == 0)
+                return State == GameState.GameOver;
+            else           
+                return false;
         }
 
-        public bool IsOver() // TODO играта завършва със загуба ако героят ни умре
+        public bool LastLevel() // Проверява дали сме на последното ниво
         {
-            return false;
+            return LevelNo == Map.Levels.Count;
         }
     }
 }
