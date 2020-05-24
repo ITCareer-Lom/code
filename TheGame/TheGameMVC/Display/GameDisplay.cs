@@ -87,5 +87,31 @@ namespace TheGameMVC.Display
         {
             throw new NotImplementedException();
         }
+
+        // избор на една от няколко възможности 
+        int SelectOption(string[] choises) 
+        {
+            int number = 1;
+            foreach (var choise in choises)
+	        {
+                Console.WriteLine($"{number} {choise}");
+                number++;
+	        }
+            int count = number-1;
+            return count;
+        }
+
+        // показване на всички същества от даден вид
+        int ShowCreatures(IEnumerable<Creature> creatures)
+        {
+            int number = 1;
+            foreach (var cteature in creatures)
+	        {
+                Console.WriteLine($"{number} {creatures}");
+                number++;
+	        }
+            int count = number-1;
+            return count;
+        }
     }
 }
