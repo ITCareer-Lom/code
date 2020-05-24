@@ -7,6 +7,7 @@ using TheGameMVC.Model.Characters;
 
 namespace TheGameMVC.Model.Game_Engine
 {
+    public class GameStoppedException : Exception { };
     public enum GameState
     {
         NotStarted = 0, // още не е избран герой
@@ -86,8 +87,8 @@ namespace TheGameMVC.Model.Game_Engine
             bool selected = false;
             if (CanSelectMove)
             {
-                bool enemyOrHelper = random.Next(2) == 1; // true = enemy | false = helper
-                if (enemyOrHelper)
+                bool enemyIsSelected = random.Next(2) == 1; // true = enemy | false = helper
+                if (enemyIsSelected)
                 {
                     Opponent = CurrentLevel.Enemies[random.Next(0, CurrentLevel.Enemies.Count)];
                 }
@@ -97,11 +98,6 @@ namespace TheGameMVC.Model.Game_Engine
                 }
                 selected = true;
             }
-            else
-            {
-                return selected;
-            }
-
             return selected;
         }
 
