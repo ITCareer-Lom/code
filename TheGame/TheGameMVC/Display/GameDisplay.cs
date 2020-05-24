@@ -14,7 +14,7 @@ namespace TheGameMVC.Display
 
         public void MapLoaded(Map map)
         {
-            Console.WriteLine("Заредена е карта "  + map.Name );
+            Console.WriteLine("Заредена е карта "  + map.Name);
         }
 
         public Hero SelectHero()
@@ -39,8 +39,26 @@ namespace TheGameMVC.Display
 
         internal Creature SelectOpponent()
         {
-            // HELP
-            throw new NotImplementedException();
+            List<Creature> oponents = new List<Creature>();
+            oponents.AddRange(Game.CurrentLevel.Enemies);
+            oponents.AddRange(Game.CurrentLevel.Helpers);
+            Console.WriteLine("Choose someone you want to go to: ");
+
+            int i = 1;
+            foreach (var oponent in oponents)
+            {
+                Console.WriteLine($"{i++}    " + oponent);
+            }
+
+            int chosenOponent = int.Parse(Console.ReadLine());
+
+            while (chosenOponent < 1 || chosenOponent > oponents.Count)
+            {
+                Console.WriteLine("Please choose an existing opponent!");
+                chosenOponent = int.Parse(Console.ReadLine());
+            }
+
+            return oponents[chosenOponent - 1];
         }
 
         internal void ShowOpponent(Creature opponent)
