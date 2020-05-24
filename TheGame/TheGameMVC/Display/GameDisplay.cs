@@ -12,9 +12,10 @@ namespace TheGameMVC.Display
     {
         public Game Game { get; set; }
 
-        public void MapLoaded(Map map)
+        public void MapLoaded(Map map) // коя карта е заредена
         {
             Console.WriteLine("Заредена е карта "  + map.Name );
+            Console.WriteLine();
         }
 
         public Hero SelectHero()
@@ -73,19 +74,22 @@ namespace TheGameMVC.Display
             throw new NotImplementedException();
         }
 
-        internal void GameOver()
+        public void GameOver() // играта завършва със загуба
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Game Over");
+            Console.WriteLine();
         }
 
-        internal void GameStopped()
+        public void GameStopped() // играта е прекъсната
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The Game stopped.");
+            Console.WriteLine();
         }
 
-        internal void GameCompleted()
+        public void GameCompleted() // играта завършва с победа
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The Game completed. You win!");
+            Console.WriteLine();
         }
 
         // избор на една от няколко възможности 
