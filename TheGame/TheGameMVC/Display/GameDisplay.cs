@@ -158,5 +158,30 @@ namespace TheGameMVC.Display
             int count = number-1;
             return count;
         }
+       //показва всички герой 
+        int ShowHero(IEnumarable<Hero> hero)
+        {
+            int number = 1;
+            foreach (var hero in heros)
+            {
+                Console.WriteLine($"{number} {heroes}");
+                number++;
+            }
+            int count = number - 1;
+            retrun count;
+        }
+        void ShowHeroActionResult(HeroActionType action, Creature opponent , bool success)
+        {
+            if (action = success)
+            {
+                Console.WriteLine("Героят успешно премина");
+            }
+            else
+            {
+                Console.WriteLine("Героят не успя да премине");
+            }
+            return action;
+        }
+
     }
 }
