@@ -22,24 +22,27 @@ namespace TheGameMVC.Display
             return null;
         }
 
-        internal void ShowLevel(Level level)
+        //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
+        public void ShowLevel(Level level)
         {
-            //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
-            Console.WriteLine("Вие сте на ниво " + Game.CurrentLevel + "то се населява от " + Game.Opponent + 
-                "и ни е нужен опит ");
+            Console.WriteLine("Вие сте на ниво " + level.Name + 
+                ", то се населява от " + level.Enemies.Count + " злодея, " +
+                + level.Helpers.Count + " добряка " +
+                "и ви е нужен опит " + level.ExperienceNeededToPass() + " за да го преминете.");
             Console.WriteLine();
         }
 
-        internal void ShowMove(int moveNo)
+        //оповестяваме на кой ход от играта сме
+        public void ShowMove(int moveNo)
         {
-             //оповестяваме на кой ход от играта сме
             Console.WriteLine("Вие сте на ход " + Game.MoveNo);
             Console.WriteLine();
         }
 
-        internal void ShowMove(bool canSelectMove)  // ако е true, e Избор, иначе е Съдба
+        // ако е true, e Избор, иначе е Съдба
+        public void ShowMove(bool canSelectMove)  
         {
-            if (canSelectMove == true )
+            if (canSelectMove)
             {
                 Console.WriteLine("Вие сте на ход Избор");
                 Console.WriteLine();
@@ -75,11 +78,11 @@ namespace TheGameMVC.Display
             return oponents[chosenOponent - 1];
         }
 
-        internal void ShowOpponent(Creature opponent)
+        public void ShowOpponent(Creature opponent)
         {
             //показва ни характеристиките на който ни е избран за противник 
-            Console.WriteLine("Вие срешнахте опонент " + Creature.name + "той има сила " + Creature.power + 
-                "и опит " + Creature.Experience);
+            Console.WriteLine("Вие срешнахте опонент " + opponent.Name + " той има сила " + opponent.Power + 
+                " и опит " + opponent.Experience);
             Console.WriteLine();
         }
 
