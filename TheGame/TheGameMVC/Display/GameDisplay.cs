@@ -44,14 +44,18 @@ namespace TheGameMVC.Display
             oponents.AddRange(Game.CurrentLevel.Helpers);
             Console.WriteLine("Choose someone you want to go to: ");
 
-            int i = 1;
-            foreach (var oponent in oponents)
-            {
-                Console.WriteLine($"{i++}    " + oponent);
-            }
+            Console.WriteLine("0 End Game");
+            ShowCreatures(oponents);
 
             int chosenOponent = int.Parse(Console.ReadLine());
 
+            if (chosenOponent == 0)
+            {
+                Game.State = GameState.GameStopped;
+                GameStopped();
+                return null;
+            }
+  
             while (chosenOponent < 1 || chosenOponent > oponents.Count)
             {
                 Console.WriteLine("Please choose an existing opponent!");
