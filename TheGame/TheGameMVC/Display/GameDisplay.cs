@@ -121,7 +121,10 @@ namespace TheGameMVC.Display
             int count = number-1;
 
             Console.WriteLine($"Select option from 1 to {choises.Length}, or 0 to quit the game: ");
-            int selectedChoise = int.Parse(Console.ReadLine());
+            do
+	        {
+                int selectedChoise = int.Parse(Console.ReadLine());
+	        } while (selecedChoise <= choises.Length && selectedChoise >= 0);
 
             return selectedChoise;
         }
