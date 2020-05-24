@@ -36,6 +36,8 @@ namespace TheGameMVC.Model.Game_Engine
         public Creature Opponent { get; set; } // с кой сме се срещнали в момента
         public GameState State { get; set; } // в какво състояние е играта в момента
 
+        private Random random = new Random();
+
         public Game(Map map)
         {
             Map = map;
@@ -46,8 +48,7 @@ namespace TheGameMVC.Model.Game_Engine
         {
             Validate(); // играта започва извикваме Validate
             // определяме CanSelectMove дали началният ход е Съдба или Избор
-            Random rnd = new Random();
-            CanSelectMove = rnd.Next(2) == 1;
+            CanSelectMove = random.Next(2) == 1;
             LevelNo = 1; // активното ниво е първото ниво от картата            
             State = GameState.Playing; // състоянето на играта е Playing
         }
@@ -73,7 +74,26 @@ namespace TheGameMVC.Model.Game_Engine
 
         bool OpponentSelection() // TODO Ники играта избира кой е нашия Opponent, връща дали дали тя ни е избрала противник
         {
-            return false;
+            bool selected = false;
+            if (CanSelectMove)
+            {
+                bool enemyOrHelper = random.Next(2) == 1; // true = enemy | false = helper
+                if (enemyOrHelper)
+                {
+                    Opponent = CurrentLevel.Enemies[random.Next(0, CurrentLevel.Enemies.Count)];
+                }
+                else
+                {
+                    Opponent = CurrentLevel.Helpers[random.Next(0, CurrentLevel.Helpers.Count)];
+                }
+                selected = true;
+            }
+            else
+            {
+                return selected;
+            }
+
+            return selected;
         }
 
         public bool Play(HeroActionType action) // изиграваме хода и определяме какъв е резултата
