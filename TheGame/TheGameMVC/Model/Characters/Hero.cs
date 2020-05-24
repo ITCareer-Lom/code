@@ -8,9 +8,11 @@ namespace TheGameMVC.Model.Characters
 {
     public class Hero : Creature
     {
+        public static string characteristics { get; private set; }
+
         // конструктор без параметри
         public Hero() : base()
-        {         
+        {
         }
 
         // победили сме някакъв противник
@@ -40,18 +42,18 @@ namespace TheGameMVC.Model.Characters
                              (item.Name == "Armor") ||
                              (item.Name == "Herbs"); break;
                 case "Princess":
-                    result = (item.Name == "Sword") || 
+                    result = (item.Name == "Sword") ||
                              (item.Name == "Holy water"); break;
                 case "Villager":
                     result = (item.Name == "Gun"); break;
                 case "Turtle":
-                    result = (item.Name == "Holy water") || 
+                    result = (item.Name == "Holy water") ||
                              (item.Name == "Food") ||
                              (item.Name == "Gold"); break;
                 case "Goddes":
                     result = (item.Name == "Axe") ||
-                             (item.Name == "Sword") || 
-                             (item.Name == "Armor") || 
+                             (item.Name == "Sword") ||
+                             (item.Name == "Armor") ||
                              (item.Name == "Gun"); break;
 
                 default: break;
@@ -71,6 +73,37 @@ namespace TheGameMVC.Model.Characters
             if (Health != 100)
             {
                 throw new ArgumentOutOfRangeException("Health have to be 100");
+            }
+
+            //проверка за валидни характеристики:
+            var result = false;
+            switch (Power && Money)
+            {
+                //Experience не е ли част от характеристиките?
+                //HELP 
+                case "Knight":
+                    result = (Creature.Power == [200...250]) ||
+                             (Creature.Money == 250); break;
+                case "Magician":
+                    result = (Creature.Power == [10...50]) ||
+                             (Creature.Money == 200) break;
+                case "Dwarf":
+                    result = (Creature.Power == [15...25]) ||
+                             (Creature.Money == 100) break;
+                case "Princess":
+                    result = (Creature.Power == [10...30]) ||
+                             (Creature.Money == 250) break;
+                case "Villager":
+                    result = (Creature.Power == [10...40]) ||
+                             (Creature.Money == 130) break;
+                case "Turtle":
+                    result = (Creature.Power == [20...50]) ||
+                             (Creature.Money == 250) break;
+                case "Goddes":
+                    result = (Creature.Power == [20...50]) ||
+                             (Creature.Money == 100) break;
+
+                default: break;
             }
         }
     }

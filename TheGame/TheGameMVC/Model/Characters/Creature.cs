@@ -62,15 +62,26 @@ namespace TheGameMVC.Model.Characters
             return success;
         }
 
-        public bool Deal(Creature seller) //TODO търгуваме с някой         
+        public bool Deal(Creature seller) // търгуваме с някой         
         {
-            // намали нашия Gold (ако сме направили покупка)
-            // преглеждаме дали има предмети които можем да притежаваме
-            // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
-            return false;
+            if (Gold < seller.Gold)
+                return false;
+            else
+            {
+                // преглеждаме дали има предмети които можем да притежаваме
+                // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
+                foreach (Item i in seller.Items)
+                {
+                    CanHaveItem(i);
+                    AcquireItem(i);
+                    seller.LoseItem(i);
+                }
+                Gold -= seller.Gold; // намали нашия Gold (ако сме направили покупка)
+                return true;
+            }
         }
 
-        public virtual bool CanHaveItem(Item item) //TODO дали това същество може да има този предмет
+        public virtual bool CanHaveItem(Item item) // дали това същество може да има този предмет
         {
             return false;
         }
@@ -80,24 +91,51 @@ namespace TheGameMVC.Model.Characters
             Items.Add(item); // добавя се към нашите Items
             switch(item.Type)
             {
-                case ItemType.Health: Health += item.UpgradeValue; break;
-                //TODO увеличава нашите Health, Power, Gold
+                // увеличава нашите Health, Power, Gold
+                case ItemType.Health:
+                    Health += item.UpgradeValue;
+                    break;
+                case ItemType.Gold:
+                    Gold += item.UpgradeValue;
+                    break;
+                case ItemType.Power:
+                    Power += item.UpgradeValue;
+                    break;
+                // HELP case ItemType.Other: 
             }
-            //TODO Може да намали нашия Gold(ако сме направили покупка)
         }
 
         void LoseItem(Item item) // разделяме се с предмет
         {
-            //TODO намалява нашите Health, Power, Gold
             Items.Remove(item); // изтрива се от нашите Items
+            switch (item.Type)
+            {
+                // намалява нашите Health, Power, Gold
+                case ItemType.Health:
+                    Health -= item.UpgradeValue;
+                    break;
+                case ItemType.Gold:
+                    Gold -= item.UpgradeValue;
+                    break;
+                case ItemType.Power:
+                    Power -= item.UpgradeValue;
+                    break;
+                // HELP case ItemType.Other:
+            }
         }
 
-        void Validate() //TODO
+        void Validate() //проверка дали е валидно, ако не - хвърляме изключение
         {
-            // проверка дали е валидно, ако не - хвърляме изключение
-            // да има име на съществото и то да е валидно име за играта
-            // да има здраве 100
+            if (Name == "") // да има име на съществото и то да е валидно име за играта
+                throw new ArgumentException("The Creature has no name.");
+            if (Health != 100) // да има здраве 100
+                throw new ArgumentException("Тhe Creature must have health 100.");
             // да има заредени първоначално само валидни предмети(проверяваме с CanHaveItem)
+            foreach (Item i in Items)
+            {
+                if (!CanHaveItem(i))
+                    throw new ArgumentException($"The Creature can't have {i} item.");
+            }
         }
     }
 }
