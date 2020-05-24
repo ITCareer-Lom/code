@@ -27,14 +27,14 @@ namespace TheGameMVC.Controller
             display.MapLoaded(game.Map);
             game.Map.Validate();
 
-            // избор на герой
-            game.MyHero = display.SelectHero();
-
-            // играта започва
-            game.Started();
-
             try 
-	        {	        
+	        {
+                // избор на герой
+                game.MyHero = display.SelectHero();
+
+                // играта започва
+                game.Started();
+            	        
                 //повтаряме докато не приключи играта:
                 while (!game.IsCompleted() && !game.IsOver())
                 {
@@ -115,9 +115,11 @@ namespace TheGameMVC.Controller
                     }
                 }
             }
+
 	        catch (GameStoppedException)
 	        {
-                //game.State == GameState.GameStoppeddisplay: играта е прекъсната
+                //display: играта е прекъсната
+                game.State == GameState.GameStopped;  
                     display.GameStopped();
         		throw;
 	        }

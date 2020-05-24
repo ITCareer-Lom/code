@@ -98,7 +98,11 @@ namespace TheGameMVC.Display
                 number++;
 	        }
             int count = number-1;
-            return count;
+
+            Console.WriteLine($"Select option from 1 to {choises.Length}, or 0 to quit the game: ");
+            int selectedChoise = int.Parse(Console.ReadLine());
+
+            return selectedChoise;
         }
 
         // показване на всички същества от даден вид
