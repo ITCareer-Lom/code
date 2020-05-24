@@ -15,6 +15,7 @@ namespace TheGameMVC.Display
         public void MapLoaded(Map map)
         {
             Console.WriteLine("Заредена е карта "  + map.Name );
+            Console.WriteLine();
         }
 
         public Hero SelectHero()
