@@ -19,7 +19,11 @@ namespace TheGameMVC.Display
 
         public Hero SelectHero()
         {
-            return null;
+            Console.WriteLine("Choose your hero:");
+            ShowCreatures(Game.Map.Heroes);
+            int myHero = int.Parse(Console.ReadLine());
+            // Game.MyHero =
+            return Game.MyHero;
         }
 
         internal void ShowLevel(Level level)
