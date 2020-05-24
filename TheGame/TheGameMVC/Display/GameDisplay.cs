@@ -22,13 +22,22 @@ namespace TheGameMVC.Display
             Console.WriteLine("Заредена е карта "  + map.Name);
         }
 
-        public Hero SelectHero()
+        public Hero SelectHero() // избор на герой
         {
             Console.WriteLine("Choose your hero:");
+            Console.WriteLine("0 End Game");
             ShowCreatures(Game.Map.Heroes);
             int myHero = int.Parse(Console.ReadLine());
-            // Game.MyHero =
-            return Game.MyHero;
+            if (myHero == 0)
+            {
+                throw new GameStoppedException();
+            }
+            else if (myHero < 1 || myHero > Game.Map.Heroes.Count)
+            {
+                Console.WriteLine("Please choose an existing hero!");
+                myHero = int.Parse(Console.ReadLine());
+            }
+            return Game.Map.Heroes[myHero-1];
         }
 
         //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
