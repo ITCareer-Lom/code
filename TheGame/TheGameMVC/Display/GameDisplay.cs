@@ -68,20 +68,22 @@ namespace TheGameMVC.Display
             Console.WriteLine("0 End Game");
             ShowCreatures(oponents);
 
-            int chosenOponent = int.Parse(Console.ReadLine());
-
-            if (chosenOponent == 0)
+            int chosenOponent;
+            do
             {
-                Game.State = GameState.GameStopped;
-                GameStopped();
-                return null;
-            }
-  
-            while (chosenOponent < 1 || chosenOponent > oponents.Count)
-            {
-                Console.WriteLine("Please choose an existing opponent!");
                 chosenOponent = int.Parse(Console.ReadLine());
-            }
+
+                if (chosenOponent == 0)
+                {
+                    throw new GameStoppedException();
+                }
+                else if (chosenOponent < 1 || chosenOponent > oponents.Count)
+                {
+                    Console.WriteLine("Please choose an existing opponent!");
+                    chosenOponent = int.Parse(Console.ReadLine());
+                }
+                else break;
+            } while (true); 
 
             return oponents[chosenOponent - 1];
         }
@@ -104,24 +106,33 @@ namespace TheGameMVC.Display
             throw new NotImplementedException();
         }
 
-        internal void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
+        public void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
         {
-            throw new NotImplementedException();
+            if (success)
+            {
+                Console.WriteLine("Meeting with " + opponent.Name + " was successfull");
+            }
+            else
+            {
+                Console.WriteLine("Meeting with " + opponent.Name + " was not successfull");
+            }
         }
 
-        internal void ShowHero(Hero myHero)
+        public void ShowHero(Hero myHero)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(myHero);
+            Console.WriteLine();
         }
 
-        internal void LevelFinished(Level currentLevel)
+        public void LevelFinished(Level currentLevel)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Level " + currentLevel.Name + " is finished, congratulations!");
+            Console.WriteLine();
         }
 
         public void GameOver() // играта завършва със загуба
         {
-            Console.WriteLine("Game Over");
+            Console.WriteLine("Game is Over :-(");
             Console.WriteLine();
         }
 
@@ -138,7 +149,7 @@ namespace TheGameMVC.Display
         }
 
         // избор на една от няколко възможности 
-        int SelectOption(string[] choises) 
+        public int SelectOption(string[] choises) 
         {
             int number = 1;
             foreach (var choise in choises)
@@ -149,16 +160,20 @@ namespace TheGameMVC.Display
             int count = number-1;
 
             Console.WriteLine($"Select option from 1 to {choises.Length}, or 0 to quit the game: ");
+            int selectedChoise;
             do
 	        {
-                int selectedChoise = int.Parse(Console.ReadLine());
-	        } while (selecedChoise <= choises.Length && selectedChoise >= 0);
-
-            return selectedChoise;
+                selectedChoise = int.Parse(Console.ReadLine());
+	        } while (selectedChoise <= choises.Length && selectedChoise >= 0);
+            if (selectedChoise == 0)
+            {
+                throw new GameStoppedException();
+            }
+            return selectedChoise-1;
         }
 
         // показване на всички същества от даден вид
-        int ShowCreatures(IEnumerable<Creature> creatures)
+        public int ShowCreatures(IEnumerable<Creature> creatures)
         {
             int number = 1;
             foreach (var cteature in creatures)
@@ -170,7 +185,7 @@ namespace TheGameMVC.Display
             return count;
         }
        //показва всички герой 
-        int ShowHero(IEnumarable<Hero> hero)
+        /*public int ShowHeroes(IEnumerable<Creature> heroes)
         {
             int number = 1;
             foreach (var hero in heros)
@@ -180,19 +195,6 @@ namespace TheGameMVC.Display
             }
             int count = number - 1;
             retrun count;
-        }
-        void ShowHeroActionResult(HeroActionType action, Creature opponent , bool success)
-        {
-            if (action = success)
-            {
-                Console.WriteLine("Героят успешно премина");
-            }
-            else
-            {
-                Console.WriteLine("Героят не успя да премине");
-            }
-            return action;
-        }
-
+        }*/
     }
 }
