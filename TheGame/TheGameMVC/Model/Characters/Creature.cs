@@ -103,5 +103,10 @@ namespace TheGameMVC.Model.Characters
                     throw new ArgumentException($"The Creature can't have {i} item.");
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Name} | {Health} HP / {Power} DMG!";
+        }
     }
 }

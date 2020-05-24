@@ -14,7 +14,7 @@ namespace TheGameMVC.Display
 
         public void MapLoaded(Map map)
         {
-            Console.WriteLine("Заредена е карта "  + map.Name );
+            Console.WriteLine("Заредена е карта "  + map.Name);
         }
 
         public Hero SelectHero()
@@ -24,28 +24,63 @@ namespace TheGameMVC.Display
 
         internal void ShowLevel(Level level)
         {
-            throw new NotImplementedException();
+            //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
+            Console.WriteLine("Вие сте на ниво " + Game.CurrentLevel + "то се населява от " + Game.Opponent + 
+                "и ни е нужен опит ");
+            Console.WriteLine();
         }
 
         internal void ShowMove(int moveNo)
         {
-            throw new NotImplementedException();
+             //оповестяваме на кой ход от играта сме
+            Console.WriteLine("Вие сте на ход " + Game.MoveNo);
+            Console.WriteLine();
         }
 
         internal void ShowMove(bool canSelectMove)  // ако е true, e Избор, иначе е Съдба
         {
-            throw new NotImplementedException();
+            if (canSelectMove == true )
+            {
+                Console.WriteLine("Вие сте на ход Избор");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Вие сте на ход Съдба");
+                Console.WriteLine();
+            }
         }
 
         internal Creature SelectOpponent()
         {
-            // HELP
-            throw new NotImplementedException();
+            List<Creature> oponents = new List<Creature>();
+            oponents.AddRange(Game.CurrentLevel.Enemies);
+            oponents.AddRange(Game.CurrentLevel.Helpers);
+            Console.WriteLine("Choose someone you want to go to: ");
+
+            int i = 1;
+            foreach (var oponent in oponents)
+            {
+                Console.WriteLine($"{i++}    " + oponent);
+            }
+
+            int chosenOponent = int.Parse(Console.ReadLine());
+
+            while (chosenOponent < 1 || chosenOponent > oponents.Count)
+            {
+                Console.WriteLine("Please choose an existing opponent!");
+                chosenOponent = int.Parse(Console.ReadLine());
+            }
+
+            return oponents[chosenOponent - 1];
         }
 
         internal void ShowOpponent(Creature opponent)
         {
-            throw new NotImplementedException();
+            //показва ни характеристиките на който ни е избран за противник 
+            Console.WriteLine("Вие срешнахте опонент " + Creature.name + "той има сила " + Creature.power + 
+                "и опит " + Creature.Experience);
+            Console.WriteLine();
         }
 
         internal HeroActionType SelectHeroAction()
@@ -73,19 +108,22 @@ namespace TheGameMVC.Display
             throw new NotImplementedException();
         }
 
-        internal void GameOver()
+        public void GameOver() // играта завършва със загуба
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Game Over");
+            Console.WriteLine();
         }
 
-        internal void GameStopped()
+        public void GameStopped() // играта е прекъсната
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The Game stopped.");
+            Console.WriteLine();
         }
 
-        internal void GameCompleted()
+        public void GameCompleted() // играта завършва с победа
         {
-            throw new NotImplementedException();
+            Console.WriteLine("The Game completed. You win!");
+            Console.WriteLine();
         }
 
         // избор на една от няколко възможности 
@@ -98,7 +136,14 @@ namespace TheGameMVC.Display
                 number++;
 	        }
             int count = number-1;
-            return count;
+
+            Console.WriteLine($"Select option from 1 to {choises.Length}, or 0 to quit the game: ");
+            do
+	        {
+                int selectedChoise = int.Parse(Console.ReadLine());
+	        } while (selecedChoise <= choises.Length && selectedChoise >= 0);
+
+            return selectedChoise;
         }
 
         // показване на всички същества от даден вид
