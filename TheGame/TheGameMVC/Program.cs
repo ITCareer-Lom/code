@@ -37,7 +37,7 @@ namespace TheGameMVC
         static public Map JsonToMap(string mapFileName)
         {
             // зареждаме картата на играта
-            var json = File.ReadAllText("..\\..\\" + mapFileName);
+            var json = File.ReadAllText("..\\..\\Maps\\" + mapFileName + ".json");
             var map = JsonConvert.DeserializeObject<Map>(json);
             return map;
         }
@@ -48,7 +48,7 @@ namespace TheGameMVC
             // var map = CodeToMap();
 
             // зареждаме картата от JSON формат
-            var map = JsonToMap("SimpleGame.json");
+            var map = JsonToMap("dani");
             //MapToDb(map);
 
             // създаваме контролера и той задейства играта

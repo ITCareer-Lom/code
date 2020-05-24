@@ -125,7 +125,7 @@ namespace TheGameMVC.Model.Characters
                     {
                         throw new ArgumentOutOfRangeException("Villager power have to be in range (10..40]");
                     }
-                    if (!(Gold == 250))
+                    if (!(Gold == 130))
                     {
                         throw new ArgumentOutOfRangeException("Villager's gold have to be 130");
                     }
@@ -147,7 +147,7 @@ namespace TheGameMVC.Model.Characters
                     {
                         throw new ArgumentOutOfRangeException("Goddes power have to be in range (20..50]");
                     }
-                    if (!(Gold == 250))
+                    if (!(Gold == 100))
                     {
                         throw new ArgumentOutOfRangeException("Goddes's gold have to be 100");
                     }

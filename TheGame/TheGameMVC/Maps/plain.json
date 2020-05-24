@@ -1,0 +1,240 @@
+﻿{
+  "Name": "Plain Game",
+  "Levels": [
+    {
+      "Id": 1,
+      "Name": "Everybody is here",
+      "Enemies": [
+        {
+          "Name": "Robber",
+          "Gold": 160,
+          "Power": 20
+        },
+        {
+          "Name": "Dragon",
+          "Power": 200,
+          "Gold": 150
+        },
+        {
+          "Name": "Serpent",
+          "Power": 80,
+          "Gold": 100
+        },
+        {
+          "Name": "Ninja",
+          "Power": 20,
+          "Gold": 200
+        },
+        {
+          "Name": "Zombie",
+          "Power": 95,
+          "Gold": 100
+        },
+        {
+          "Name": "Vampire",
+          "Power": 150,
+          "Gold": 120
+        },
+        {
+          "Name": "Witch",
+          "Power": 150,
+          "Gold": 60
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Elf",
+          "Gold": 160,
+          "Power": 170
+        },
+        {
+          "Name": "Unicorn",
+          "Power": 200,
+          "Gold": 150
+        },
+        {
+          "Name": "Merchant",
+          "Power": 80,
+          "Gold": 100
+        },
+        {
+          "Name": "Doctor",
+          "Price": 130,
+          "Power": 200,
+          "Gold": 200
+        },
+        {
+          "Name": "Spirit",
+          "Health": 120,
+          "Power": 95,
+          "Gold": 100
+        },
+        {
+          "Name": "Wise Man",
+          "Health": 160,
+          "Power": 150,
+          "Gold": 120
+        },
+        {
+          "Name": "Gnome",
+          "Health": 70,
+          "Power": 150,
+          "Gold": 60
+        }
+      ]
+    }
+  ],
+  "Heroes": [
+    {
+      "Name": "Knight",
+      "Power": 30,
+      "Experience": 20,
+      "Gold": 250,
+      "Items": [
+        {
+          "Name": "Sword",
+          "ItemType": "Power",
+          "UpgradeValue": 50
+        },
+        {
+          "Name": "Shield",
+          "ItemType": "Health",
+          "UpgradeValue": 50
+        }
+      ]
+    },
+    {
+      "Name": "Magician",
+      "Power": 50,
+      "Experience": 90,
+      "Gold": 200,
+      "Items": [
+        {
+          "Name": "Magic wand",
+          "ItemType": "Power",
+          "UpgradeValue": 55
+        },
+        {
+          "Name": "Holy water",
+          "ItemType": "Health",
+          "UpgradeValue": 20
+        },
+        {
+          "Name": "Magic book",
+          "ItemType": "Power",
+          "UpgradeValue": 70
+        }
+      ]
+    },
+    {
+      "Name": "Dwarf",
+      "Power": 25,
+      "Experience": 50,
+      "Gold": 100,
+      "Items": [
+        {
+          "Name": "Axe",
+          "ItemType": "Power",
+          "UpgradeValue": 70
+        },
+        {
+          "Name": "Sword",
+          "ItemType": "Power",
+          "UpgradeValue": 50
+        },
+        {
+          "Name": "Armor",
+          "ItemType": "Power",
+          "UpgradeValue": 30
+        },
+        {
+          "Name": "Herbs",
+          "ItemType": "Health",
+          "UpgradeValue": 50
+        }
+      ]
+    },
+    {
+      "Name": "Princess",
+      "Power": 30,
+      "Experience": 20,
+      "Gold": 250,
+      "Items": [
+        {
+          "Name": "Sword",
+          "ItemType": "Power",
+          "UpgradeValue": 50
+        },
+        {
+          "Name": "Holy water",
+          "ItemType": "Health",
+          "UpgradeValue": 20
+        }
+      ]
+    },
+    {
+      "Name": "Villager",
+      "Power": 40,
+      "Experience": 0,
+      "Gold": 130,
+      "Items": [
+        {
+          "Name": "Gun",
+          "ItemType": "Power",
+          "UpgradeValue": 65
+        }
+      ]
+    },
+    {
+      "Name": "Turtle",
+      "Power": 50,
+      "Experience": 60,
+      "Gold": 250,
+      "Items": [
+        {
+          "Name": "Holy water",
+          "ItemType": "Health",
+          "UpgradeValue": 20
+        },
+        {
+          "Name": "Food",
+          "ItemType": "Health",
+          "UpgradeValue": 25
+        },
+        {
+          "Name": "Gold",
+          "ItemType": "Gold",
+          "UpgradeValue": 400
+        }
+      ]
+    },
+    {
+      "Name": "Goddes",
+      "Power": 50,
+      "Experience": 95,
+      "Gold": 100,
+      "Items": [
+        {
+          "Name": "Axe",
+          "ItemType": "Power",
+          "UpgradeValue": 70
+        },
+        {
+          "Name": "Sword",
+          "ItemType": "Power",
+          "UpgradeValue": 50
+        },
+        {
+          "Name": "Armor",
+          "ItemType": "Power",
+          "UpgradeValue": 30
+        },
+        {
+          "Name": "Gun",
+          "ItemType": "Power",
+          "UpgradeValue": 65
+        }
+      ]
+    }
+  ]
+}
