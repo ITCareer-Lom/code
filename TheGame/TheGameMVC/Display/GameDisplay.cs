@@ -28,17 +28,31 @@ namespace TheGameMVC.Display
 
         internal void ShowLevel(Level level)
         {
-            throw new NotImplementedException();
+            //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
+            Console.WriteLine("Вие сте на ниво " + Game.CurrentLevel + "то се населява от " + Game.Opponent + 
+                "и ни е нужен опит ");
+            Console.WriteLine();
         }
 
         internal void ShowMove(int moveNo)
         {
-            throw new NotImplementedException();
+             //оповестяваме на кой ход от играта сме
+            Console.WriteLine("Вие сте на ход " + Game.MoveNo);
+            Console.WriteLine();
         }
 
         internal void ShowMove(bool canSelectMove)  // ако е true, e Избор, иначе е Съдба
         {
-            throw new NotImplementedException();
+            if (canSelectMove == true )
+            {
+                Console.WriteLine("Вие сте на ход Избор");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Вие сте на ход Съдба");
+                Console.WriteLine();
+            }
         }
 
         internal Creature SelectOpponent()
@@ -67,7 +81,10 @@ namespace TheGameMVC.Display
 
         internal void ShowOpponent(Creature opponent)
         {
-            throw new NotImplementedException();
+            //показва ни характеристиките на който ни е избран за противник 
+            Console.WriteLine("Вие срешнахте опонент " + Creature.name + "той има сила " + Creature.power + 
+                "и опит " + Creature.Experience);
+            Console.WriteLine();
         }
 
         internal HeroActionType SelectHeroAction()
@@ -123,7 +140,14 @@ namespace TheGameMVC.Display
                 number++;
 	        }
             int count = number-1;
-            return count;
+
+            Console.WriteLine($"Select option from 1 to {choises.Length}, or 0 to quit the game: ");
+            do
+	        {
+                int selectedChoise = int.Parse(Console.ReadLine());
+	        } while (selecedChoise <= choises.Length && selectedChoise >= 0);
+
+            return selectedChoise;
         }
 
         // показване на всички същества от даден вид
@@ -138,5 +162,30 @@ namespace TheGameMVC.Display
             int count = number-1;
             return count;
         }
+       //показва всички герой 
+        int ShowHero(IEnumarable<Hero> hero)
+        {
+            int number = 1;
+            foreach (var hero in heros)
+            {
+                Console.WriteLine($"{number} {heroes}");
+                number++;
+            }
+            int count = number - 1;
+            retrun count;
+        }
+        void ShowHeroActionResult(HeroActionType action, Creature opponent , bool success)
+        {
+            if (action = success)
+            {
+                Console.WriteLine("Героят успешно премина");
+            }
+            else
+            {
+                Console.WriteLine("Героят не успя да премине");
+            }
+            return action;
+        }
+
     }
 }
