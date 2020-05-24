@@ -44,40 +44,43 @@
       "Helpers": [
         {
           "Name": "Elf",
+          "Price": 0,
           "Gold": 160,
           "Power": 170
         },
         {
           "Name": "Unicorn",
+          "Price": 0,
           "Power": 200,
           "Gold": 150
         },
         {
           "Name": "Merchant",
+          "Price": 0,
           "Power": 80,
           "Gold": 100
         },
         {
           "Name": "Doctor",
-          "Price": 130,
+          "Price": 0,
           "Power": 200,
           "Gold": 200
         },
         {
           "Name": "Spirit",
-          "Health": 120,
+          "Price": 0,
           "Power": 95,
           "Gold": 100
         },
         {
           "Name": "Wise Man",
-          "Health": 160,
+          "Price": 0,
           "Power": 150,
           "Gold": 120
         },
         {
           "Name": "Gnome",
-          "Health": 70,
+          "Price": 0,
           "Power": 150,
           "Gold": 60
         }

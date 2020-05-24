@@ -106,7 +106,7 @@ namespace TheGameMVC.Model.Characters
 
         public override string ToString()
         {
-            return $"{Name} | {Health} HP / {Power} DMG!";
+            return $"{Name}: {Health} HP, {Experience} XP, {Power} DMG and {Items.Count} items";
         }
     }
 }

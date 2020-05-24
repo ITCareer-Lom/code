@@ -10,6 +10,11 @@ namespace TheGameMVC.Display
 {
     public class GameDisplay
     {
+        public GameDisplay(Game game)
+        {
+            Game = game;
+        }
+
         public Game Game { get; set; }
 
         public void MapLoaded(Map map)
@@ -176,9 +181,9 @@ namespace TheGameMVC.Display
         public int ShowCreatures(IEnumerable<Creature> creatures)
         {
             int number = 1;
-            foreach (var cteature in creatures)
+            foreach (var creature in creatures)
 	        {
-                Console.WriteLine($"{number} {creatures}");
+                Console.WriteLine($"{number} {creature}");
                 number++;
 	        }
             int count = number-1;

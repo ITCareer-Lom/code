@@ -22,7 +22,7 @@ namespace TheGameMVC.Controller
             //създаваме модела game със тази карта
             game = new Game(map);
             //създаваме display с този модел game
-            display = new GameDisplay();
+            display = new GameDisplay(game);
             // коя карта е заредена
             display.MapLoaded(game.Map);
             game.Map.Validate();

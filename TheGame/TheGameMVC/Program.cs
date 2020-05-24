@@ -48,7 +48,7 @@ namespace TheGameMVC
             // var map = CodeToMap();
 
             // зареждаме картата от JSON формат
-            var map = JsonToMap("dani");
+            var map = JsonToMap("plain");
             //MapToDb(map);
 
             // създаваме контролера и той задейства играта
