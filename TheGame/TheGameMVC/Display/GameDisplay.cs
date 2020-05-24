@@ -12,10 +12,9 @@ namespace TheGameMVC.Display
     {
         public Game Game { get; set; }
 
-        public void MapLoaded(Map map) // коя карта е заредена
+        public void MapLoaded(Map map)
         {
-            Console.WriteLine("Заредена е карта "  + map.Name );
-            Console.WriteLine();
+            Console.WriteLine("Заредена е карта "  + map.Name);
         }
 
         public Hero SelectHero()
@@ -40,8 +39,26 @@ namespace TheGameMVC.Display
 
         internal Creature SelectOpponent()
         {
-            // HELP
-            throw new NotImplementedException();
+            List<Creature> oponents = new List<Creature>();
+            oponents.AddRange(Game.CurrentLevel.Enemies);
+            oponents.AddRange(Game.CurrentLevel.Helpers);
+            Console.WriteLine("Choose someone you want to go to: ");
+
+            int i = 1;
+            foreach (var oponent in oponents)
+            {
+                Console.WriteLine($"{i++}    " + oponent);
+            }
+
+            int chosenOponent = int.Parse(Console.ReadLine());
+
+            while (chosenOponent < 1 || chosenOponent > oponents.Count)
+            {
+                Console.WriteLine("Please choose an existing opponent!");
+                chosenOponent = int.Parse(Console.ReadLine());
+            }
+
+            return oponents[chosenOponent - 1];
         }
 
         internal void ShowOpponent(Creature opponent)
@@ -74,22 +91,19 @@ namespace TheGameMVC.Display
             throw new NotImplementedException();
         }
 
-        public void GameOver() // играта завършва със загуба
+        internal void GameOver()
         {
-            Console.WriteLine("Game Over");
-            Console.WriteLine();
+            throw new NotImplementedException();
         }
 
-        public void GameStopped() // играта е прекъсната
+        internal void GameStopped()
         {
-            Console.WriteLine("The Game stopped.");
-            Console.WriteLine();
+            throw new NotImplementedException();
         }
 
-        public void GameCompleted() // играта завършва с победа
+        internal void GameCompleted()
         {
-            Console.WriteLine("The Game completed. You win!");
-            Console.WriteLine();
+            throw new NotImplementedException();
         }
 
         // избор на една от няколко възможности 
