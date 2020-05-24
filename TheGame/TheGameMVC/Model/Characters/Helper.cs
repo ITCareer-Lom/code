@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace TheGameMVC.Model.Characters
 {
-    public class Helper // цветелин
+    public class Helper : Creature 
     {
         // TODO int HelperId
+        public int Price { get; set; }
+
+        public Helper() : base()
+        {
+            Price = 0;
+        }
     }
 }

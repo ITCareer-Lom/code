@@ -36,7 +36,7 @@ namespace TheGameMVC.Model.Game_Engine
         //проверяваме дали нивото е завършено 
         public bool IsCompleted(Hero hero)
         {
-            var result = hero.Experience >= ExperienceNeededToPass();
+            var result = (hero.Health > 0) && (hero.Experience >= ExperienceNeededToPass());
             return result;
         }
 

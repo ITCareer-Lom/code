@@ -8,6 +8,7 @@ namespace TheGameMVC.Model.Characters
 {
     public class Creature
     {
+        public int Id { get; set; }
         public string Name { get; set; } // името на съществото
         public int Health { get; set; } // здравето му
         public int Power { get; set; } // силата му
@@ -48,45 +49,12 @@ namespace TheGameMVC.Model.Characters
             }
         }
 
-        public bool Fight(Creature opponent)
-        {
-            while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
-            {
-                opponent.Health -= Power; // бием се с някой намалява victim.Health със нашия Power 
-                Health -= opponent.Power;
-            }
-            var success = Health > 0;
-            if(success) // за победителя викаме WonVictoryOver()
-                WonVictoryOver(opponent);
-            else opponent.WonVictoryOver(this);
-            return success;
-        }
-
-        public bool Deal(Creature seller) // търгуваме с някой         
-        {
-            if (Gold < seller.Gold)
-                return false;
-            else
-            {
-                // преглеждаме дали има предмети които можем да притежаваме
-                // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
-                foreach (Item i in seller.Items)
-                {
-                    CanHaveItem(i);
-                    AcquireItem(i);
-                    seller.LoseItem(i);
-                }
-                Gold -= seller.Gold; // намали нашия Gold (ако сме направили покупка)
-                return true;
-            }
-        }
-
         public virtual bool CanHaveItem(Item item) // дали това същество може да има този предмет
         {
             return false;
         }
 
-        void AcquireItem(Item item) // придобиваме предмет
+        public void AcquireItem(Item item) // придобиваме предмет
         {
             Items.Add(item); // добавя се към нашите Items
             switch(item.Type)
@@ -101,11 +69,10 @@ namespace TheGameMVC.Model.Characters
                 case ItemType.Power:
                     Power += item.UpgradeValue;
                     break;
-                // HELP case ItemType.Other: 
             }
         }
 
-        void LoseItem(Item item) // разделяме се с предмет
+        public void LoseItem(Item item) // разделяме се с предмет
         {
             Items.Remove(item); // изтрива се от нашите Items
             switch (item.Type)
@@ -120,7 +87,6 @@ namespace TheGameMVC.Model.Characters
                 case ItemType.Power:
                     Power -= item.UpgradeValue;
                     break;
-                // HELP case ItemType.Other:
             }
         }
 

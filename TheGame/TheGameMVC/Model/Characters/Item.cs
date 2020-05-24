@@ -10,8 +10,7 @@ namespace TheGameMVC.Model.Characters
     {
         Power = 0,
         Health = 1,
-        Gold = 2,
-        Other = 3
+        Gold = 2
 
     }
 

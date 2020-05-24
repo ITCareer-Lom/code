@@ -32,7 +32,16 @@ namespace TheGameMVC.Model.Game_Engine
         public bool CanSelectMove { get; set; } // дали ходът е Съдба или Избор
         public int LevelNo { get; private set; } // номера на нивото в картата
         public int MoveNo { get; private set; } //
-        public Level CurrentLevel { get; private set; } // кое от всичките Нива в момента сме, с get ни връща някой от нивата в картата
+        public Level CurrentLevel
+        {
+            get
+            {
+                if (Map == null || LevelNo < 1 )
+                    return null;
+                else
+                    return Map.Levels[LevelNo - 1];
+            }
+        } // кое от всичките Нива в момента сме, с get ни връща някой от нивата в картата
         public Creature Opponent { get; set; } // с кой сме се срещнали в момента
         public GameState State { get; set; } // в какво състояние е играта в момента
 
@@ -82,12 +91,10 @@ namespace TheGameMVC.Model.Game_Engine
             switch (action)
             {
                 case HeroActionType.Fight:
-                    success = MyHero.Fight(Opponent);
+                    success = MyHero.Fight(Opponent as Enemy);
                     break;
                 case HeroActionType.Deal:
-                    success = MyHero.Deal(Opponent);
-                    break;
-                case HeroActionType.Speak:
+                    success = MyHero.Deal(Opponent as Helper);
                     break;
             }
             return success;
@@ -98,12 +105,11 @@ namespace TheGameMVC.Model.Game_Engine
             if (!LastLevel() && CurrentLevel.IsCompleted(MyHero))
             {
                 LevelNo++;
-                CurrentLevel.Id++;
                 State = GameState.Playing;
             }
             else
                 State = GameState.GameCompleted;
-            return !LastLevel() && CurrentLevel.IsCompleted(MyHero);
+            return !LastLevel();
         }
 
         void Validate() // проверка дали е валидна, ако не - хвърляме изключение 
@@ -118,23 +124,16 @@ namespace TheGameMVC.Model.Game_Engine
         public void LoadLevel() // и ти трябва опит 100 * нивото за да преминеш нивото
         {
             MyHero.Experience = 0; 
-            CurrentLevel.ExperienceNeededToPass();
         }
         
         public bool IsCompleted() // играта завършва с победа ако е завършено последното ниво
         {
-            if (LastLevel() && CurrentLevel.IsCompleted(MyHero))
-                return State == GameState.GameCompleted;
-            else
-                return false;
+            return State == GameState.GameCompleted;
         }
 
         public bool IsOver() // играта завършва със загуба ако героят ни умре
         {
-            if (MyHero.Health == 0)
-                return State == GameState.GameOver;
-            else           
-                return false;
+            return State == GameState.GameOver;
         }
 
         public bool LastLevel() // Проверява дали сме на последното ниво

@@ -8,8 +8,6 @@ namespace TheGameMVC.Model.Characters
 {
     public class Hero : Creature
     {
-        public static string characteristics { get; private set; }
-
         // конструктор без параметри
         public Hero() : base()
         {
@@ -76,15 +74,19 @@ namespace TheGameMVC.Model.Characters
             }
 
             //проверка за валидни характеристики:
-            var result = false;
-            switch (Power && Money)
+            switch (Name)
             {
-                //Experience не е ли част от характеристиките?
-                //HELP 
                 case "Knight":
-                    result = (Creature.Power == [200...250]) ||
-                             (Creature.Money == 250); break;
-                case "Magician":
+                    if (!(Power >= 20 && Power <= 50))
+                    {
+                        throw new ArgumentOutOfRangeException("Knight power have to be in [20..50]");
+                    }
+                    if (!(Gold == 250))
+                    {
+                        throw new ArgumentOutOfRangeException("Knight gold have to be 250");
+                    }
+                    break;
+/*                case "Magician":
                     result = (Creature.Power == [10...50]) ||
                              (Creature.Money == 200) break;
                 case "Dwarf":
@@ -104,6 +106,48 @@ namespace TheGameMVC.Model.Characters
                              (Creature.Money == 100) break;
 
                 default: break;
+*/            }                 
+        }
+
+        public bool Fight(Enemy opponent)
+        {
+            while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
+            {
+                opponent.Health -= Power; // бием се с някой намалява victim.Health със нашия Power 
+                Health -= opponent.Power;
+            }
+            var success = Health > 0;
+            if (success) // за победителя викаме WonVictoryOver()
+                WonVictoryOver(opponent);
+            else opponent.WonVictoryOver(this);
+            return success;
+        }
+
+        public bool Deal(Helper seller) // търгуваме с някой         
+        {
+            if (Gold < seller.Price)
+                return false;  // ако не ни стигат парите - чао
+            else
+            {
+                // преглеждаме дали има предмети които можем да притежаваме
+                // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
+                var hasBoughtItems = false;
+                foreach (Item i in seller.Items)
+                {
+                    if(CanHaveItem(i))
+                    {
+                        AcquireItem(i);
+                        seller.LoseItem(i);
+                        hasBoughtItems = true;
+                    }
+                }
+                if(hasBoughtItems)
+                {
+                    Gold -= seller.Price;
+                    seller.Gold += seller.Price;
+                }
+                // намали нашия Gold (ако сме направили покупка)
+                return hasBoughtItems;
             }
         }
     }
