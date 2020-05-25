@@ -59,6 +59,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Maps\plain.json" />
+    <None Include="Maps\V Map.json" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">

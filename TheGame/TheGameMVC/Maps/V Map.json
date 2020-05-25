@@ -1,0 +1,688 @@
+{
+  "Name": "V Map",
+  "Levels": [
+    {
+      "Id": 1,
+      "Name": "Level 1",
+      "Enemies": [
+        {
+          "Name": "Robber",
+          "Power": 20,
+          "Experience": 60,
+          "Gold": 160
+        },
+        {
+          "Name": "Ninja",
+          "Power": 20,
+          "Experience": 55,
+          "Gold": 200
+        },
+        {
+          "Name": "Witch",
+          "Power": 15,
+          "Experience": 45,
+          "Gold": 60
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Wise Man",
+          "Price": 60,
+          "Power": 150,
+          "Gold": 120,
+          "Items": [
+            {
+              "Name": "Magic book",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            }
+          ]
+        },
+        {
+          "Name": "Gnome",
+          "Price": 25,
+          "Power": 150,
+          "Gold": 60,
+          "Items": [
+            {
+              "Name": "Gold",
+              "ItemType": "Gold",
+              "UpgradeValue": 400
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Gun",
+              "ItemType": "Power",
+              "UpgradeValue": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Level 2",
+      "Enemies": [
+        {
+          "Name": "Dragon",
+          "Power": 30,
+          "Experience": 110,
+          "Gold": 150
+        },
+        {
+          "Name": "Serpent",
+          "Power": 20,
+          "Experience": 70,
+          "Gold": 100
+        },
+        {
+          "Name": "Vampire",
+          "Power": 15,
+          "Experience": 95,
+          "Gold": 120
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Elf",
+          "Price": 70,
+          "Power": 170,
+          "Gold": 160,
+          "Items": [
+            {
+              "Name": "Sword",
+              "ItemType": "Power",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Shield",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            }
+          ]
+        },
+        {
+          "Name": "Unicorn",
+          "Price": 40,
+          "Power": 200,
+          "Gold": 150,
+          "Items": [
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            },
+            {
+              "Name": "Magic wand",
+              "ItemType": "Power",
+              "UpgradeValue": 55
+            }
+          ]
+        },
+        {
+          "Name": "Merchant",
+          "Price": 10,
+          "Power": 80,
+          "Gold": 100,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Axe",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Magic wand",
+              "ItemType": "Power",
+              "UpgradeValue": 55
+            }
+          ]
+        },
+        {
+          "Name": "Doctor",
+          "Price": 35,
+          "Power": 200,
+          "Gold": 200,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Name": "Level 3",
+      "Enemies": [
+        {
+          "Name": "Zombie",
+          "Power": 95,
+          "Experience": 120,
+          "Gold": 100
+        },
+        {
+          "Name": "Zombie",
+          "Power": 95,
+          "Experience": 120,
+          "Gold": 100
+        },
+        {
+          "Name": "Vampire",
+          "Power": 150,
+          "Experience": 85,
+          "Gold": 120
+        },
+        {
+          "Name": "Witch",
+          "Power": 150,
+          "Experience": 95,
+          "Gold": 60
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Unicorn",
+          "Price": 60,
+          "Power": 200,
+          "Gold": 150,
+          "Items": [
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            },
+            {
+              "Name": "Magic wand",
+              "ItemType": "Power",
+              "UpgradeValue": 55
+            }
+          ]
+        },
+        {
+          "Name": "Doctor",
+          "Price": 90,
+          "Power": 200,
+          "Gold": 200,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            }
+          ]
+        },
+        {
+          "Name": "Wise Man",
+          "Price": 120,
+          "Power": 150,
+          "Gold": 120,
+          "Items": [
+            {
+              "Name": "Magic book",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            }
+          ]
+        },
+        {
+          "Name": "Gnome",
+          "Price": 50,
+          "Power": 150,
+          "Gold": 60,
+          "Items": [
+            {
+              "Name": "Gold",
+              "ItemType": "Gold",
+              "UpgradeValue": 400
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Gun",
+              "ItemType": "Power",
+              "UpgradeValue": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Level 4",
+      "Enemies": [
+        {
+          "Name": "Robber",
+          "Power": 20,
+          "Experience": 40,
+          "Gold": 160
+        },
+        {
+          "Name": "Dragon",
+          "Power": 45,
+          "Experience": 150,
+          "Gold": 150
+        },
+        {
+          "Name": "Serpent",
+          "Power": 30,
+          "Experience": 100,
+          "Gold": 100
+        },
+        {
+          "Name": "Ninja",
+          "Power": 20,
+          "Experience": 50,
+          "Gold": 200
+        },
+        {
+          "Name": "Zombie",
+          "Power": 50,
+          "Experience": 200,
+          "Gold": 100
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Elf",
+          "Price": 50,
+          "Gold": 160,
+          "Power": 170,
+          "Items": [
+            {
+              "Name": "Sword",
+              "ItemType": "Power",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Shield",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            }
+          ]
+        },
+        {
+          "Name": "Doctor",
+          "Price": 120,
+          "Power": 200,
+          "Gold": 200,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            }
+          ]
+        },
+        {
+          "Name": "Spirit",
+          "Price": 75,
+          "Power": 95,
+          "Gold": 100
+        },
+        {
+          "Name": "Wise Man",
+          "Price": 150,
+          "Power": 150,
+          "Gold": 120,
+          "Items": [
+            {
+              "Name": "Magic book",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            }
+          ]
+        },
+        {
+          "Name": "Gnome",
+          "Price": 60,
+          "Power": 150,
+          "Gold": 60,
+          "Items": [
+            {
+              "Name": "Gold",
+              "ItemType": "Gold",
+              "UpgradeValue": 400
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Gun",
+              "ItemType": "Power",
+              "UpgradeValue": 65
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Level 5",
+      "Enemies": [
+        {
+          "Name": "Robber",
+          "Power": 10,
+          "Experience": 55,
+          "Gold": 160
+        },
+        {
+          "Name": "Dragon",
+          "Power": 40,
+          "Experience": 120,
+          "Gold": 150
+        },
+        {
+          "Name": "Ninja",
+          "Power": 25,
+          "Experience": 70,
+          "Gold": 200
+        },
+        {
+          "Name": "Zombie",
+          "Power": 35,
+          "Experience": 100,
+          "Gold": 100
+        },
+        {
+          "Name": "Vampire",
+          "Power": 50,
+          "Experience": 150,
+          "Gold": 120
+        },
+        {
+          "Name": "Witch",
+          "Power": 10,
+          "Experience": 55,
+          "Gold": 60
+        }
+      ],
+      "Helpers": [
+        {
+          "Name": "Elf",
+          "Price": 55,
+          "Gold": 160,
+          "Power": 170,
+          "Items": [
+            {
+              "Name": "Sword",
+              "ItemType": "Power",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Shield",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            }
+          ]
+        },
+        {
+          "Name": "Unicorn",
+          "Price": 60,
+          "Power": 200,
+          "Gold": 150,
+          "Items": [
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            },
+            {
+              "Name": "Magic wand",
+              "ItemType": "Power",
+              "UpgradeValue": 55
+            }
+          ]
+        },
+        {
+          "Name": "Doctor",
+          "Price": 150,
+          "Power": 200,
+          "Gold": 200,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Food",
+              "ItemType": "Health",
+              "UpgradeValue": 25
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            }
+          ]
+        },
+        {
+          "Name": "Spirit",
+          "Price": 100,
+          "Power": 95,
+          "Gold": 100,
+          "Items": [
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Axe",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Magic wand",
+              "ItemType": "Power",
+              "UpgradeValue": 55
+            }
+          ]
+        },
+        {
+          "Name": "Wise Man",
+          "Price": 40,
+          "Power": 150,
+          "Gold": 120,
+          "Items": [
+            {
+              "Name": "Magic book",
+              "ItemType": "Power",
+              "UpgradeValue": 70
+            },
+            {
+              "Name": "Herbs",
+              "ItemType": "Health",
+              "UpgradeValue": 50
+            },
+            {
+              "Name": "Armor",
+              "ItemType": "Power",
+              "UpgradeValue": 30
+            }
+          ]
+        },
+        {
+          "Name": "Gnome",
+          "Price": 20,
+          "Power": 150,
+          "Gold": 60,
+          "Items": [
+            {
+              "Name": "Gold",
+              "ItemType": "Gold",
+              "UpgradeValue": 400
+            },
+            {
+              "Name": "Holy water",
+              "ItemType": "Health",
+              "UpgradeValue": 20
+            },
+            {
+              "Name": "Gun",
+              "ItemType": "Power",
+              "UpgradeValue": 65
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Heroes": [
+    {
+      "Name": "Knight",
+      "Power": 30,
+      "Experience": 0,
+      "Gold": 250,
+      "Items": []
+    },
+    {
+      "Name": "Magician",
+      "Power": 40,
+      "Experience": 0,
+      "Gold": 200,
+      "Items": []
+    },
+    {
+      "Name": "Dwarf",
+      "Power": 20,
+      "Experience": 0,
+      "Gold": 100,
+      "Items": []
+    },
+    {
+      "Name": "Princess",
+      "Power": 30,
+      "Experience": 0,
+      "Gold": 250,
+      "Items": []
+    },
+    {
+      "Name": "Villager",
+      "Power": 15,
+      "Experience": 0,
+      "Gold": 130,
+      "Items": []
+    },
+    {
+      "Name": "Turtle",
+      "Power": 20,
+      "Experience": 0,
+      "Gold": 250,
+      "Items": []
+    },
+    {
+      "Name": "Goddes",
+      "Power": 25,
+      "Experience": 0,
+      "Gold": 100,
+      "Items": []
+    }
+  ]
+}
