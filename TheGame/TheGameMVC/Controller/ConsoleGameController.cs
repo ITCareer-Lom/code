@@ -62,6 +62,15 @@ namespace TheGameMVC.Controller
                             // избираме с кой искаме да се срещнем и записваме кой е нашия Opponent
                             game.Opponent = display.SelectOpponent();
                         }
+
+                        // ход съдба се избира нашия опонент
+                        if (!game.OpponentSelection())
+                        {
+                            continue;
+                            // ако не е успяло да ни избере противник
+                        }
+                        
+
                         // показва ни характеристиките на който ни е избран за противник
                         display.ShowOpponent(game.Opponent);
 

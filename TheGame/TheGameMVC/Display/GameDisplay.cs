@@ -19,7 +19,7 @@ namespace TheGameMVC.Display
 
         public void MapLoaded(Map map)
         {
-            Console.WriteLine("Заредена е карта "  + map.Name);
+            Console.WriteLine("Map loaded: "  + map.Name);
         }
 
         public Hero SelectHero() // избор на герой
@@ -43,17 +43,17 @@ namespace TheGameMVC.Display
         //съобщаваме в кое ниво сме влезли и кой го населява, колко опит ни е нужен за преминаване и т.н.
         public void ShowLevel(Level level)
         {
-            Console.WriteLine("Вие сте на ниво " + level.Name + 
-                ", то се населява от " + level.Enemies.Count + " злодея, " +
-                + level.Helpers.Count + " добряка " +
-                "и ви е нужен опит " + level.ExperienceNeededToPass() + " за да го преминете.");
+            Console.WriteLine("You are in level: " + level.Name + 
+                ", there are " + level.Enemies.Count + " enemies, " +
+                + level.Helpers.Count + " helpers " +
+                "and you need " + level.ExperienceNeededToPass() + "XP to go to the next level.");
             Console.WriteLine();
         }
 
         //оповестяваме на кой ход от играта сме
         public void ShowMove(int moveNo)
         {
-            Console.WriteLine("Вие сте на ход " + Game.MoveNo);
+            Console.WriteLine("Your turn: " + Game.MoveNo);
             Console.WriteLine();
         }
 
@@ -62,12 +62,12 @@ namespace TheGameMVC.Display
         {
             if (canSelectMove)
             {
-                Console.WriteLine("Вие сте на ход Избор");
+                Console.WriteLine("You are on turn Choice");
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("Вие сте на ход Съдба");
+                Console.WriteLine("You are on turn Destiny");
                 Console.WriteLine();
             }
         }
@@ -105,19 +105,19 @@ namespace TheGameMVC.Display
         public void ShowOpponent(Creature opponent)
         {
             //показва ни характеристиките на който ни е избран за противник 
-            Console.WriteLine("Вие срешнахте опонент " + opponent.Name + " той има сила " + opponent.Power + 
-                " и опит " + opponent.Experience);
+            Console.WriteLine("You meet " + opponent.Name + " he has " + opponent.Power + 
+                " power and " + opponent.Experience + "XP");
             Console.WriteLine();
         }
 
         internal HeroActionType SelectHeroAction()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // TODO
         }
 
         internal void ShowHeroAction(HeroActionType action, Creature opponent)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); // TODO
         }
 
         public void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)

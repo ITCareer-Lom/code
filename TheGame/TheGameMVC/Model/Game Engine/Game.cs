@@ -82,10 +82,10 @@ namespace TheGameMVC.Model.Game_Engine
             return false;
         }
 
-        bool OpponentSelection() // TODO Ники играта избира кой е нашия Opponent, връща дали дали тя ни е избрала противник
+        internal bool OpponentSelection() // TODO Ники играта избира кой е нашия Opponent, връща дали дали тя ни е избрала противник
         {
             bool selected = false;
-            if (CanSelectMove)
+            if (CanSelectMove == false)
             {
                 bool enemyIsSelected = random.Next(2) == 1; // true = enemy | false = helper
                 if (enemyIsSelected)
