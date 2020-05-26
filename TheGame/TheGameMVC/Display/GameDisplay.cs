@@ -115,9 +115,19 @@ namespace TheGameMVC.Display
             throw new NotImplementedException(); // TODO
         }
 
-        internal void ShowHeroAction(HeroActionType action, Creature opponent)
+        public void ShowHeroAction(HeroActionType action, Creature opponent)
         {
-            throw new NotImplementedException(); // TODO
+            if (action)
+            {
+                Console.WriteLine("You fight with " + opponent.Name + "you have" + myHero.Power +
+                    "power left"  + myHero.Gold + 
+                    "and your experiance is" + myHero.Experience);
+                Console.WriteLine();
+            }
+          else
+            {
+                Console.WriteLine("You loose the game");
+            }
         }
 
         public void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
