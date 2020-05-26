@@ -64,7 +64,7 @@ namespace TheGameMVC.Controller
                         }
 
                         // ход съдба се избира нашия опонент
-                        if (!game.OpponentSelection())
+                        if (!game.OpponentSelection() && canSelect == false)
                         {
                             continue;
                             // ако не е успяло да ни избере противник
@@ -82,6 +82,8 @@ namespace TheGameMVC.Controller
 
                         // изиграваме хода и определяме какъв е резултата
                         bool success = game.Play(action);
+
+                        // TODO Когато героя умре играта продължава, защото никъде не проверяме дали е жив или мъртъв.
 
                         // съобщаваме резултата от играта 
                         display.ShowHeroActionResult(action, game.Opponent, success);

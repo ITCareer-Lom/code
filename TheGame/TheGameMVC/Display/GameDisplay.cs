@@ -112,21 +112,19 @@ namespace TheGameMVC.Display
 
         internal HeroActionType SelectHeroAction()
         {
-            throw new NotImplementedException(); // TODO
+            throw new NotImplementedException(); // TODO Да даде на човека избор между всички HeroTypeAction
         }
 
         public void ShowHeroAction(HeroActionType action, Creature opponent)
         {
+
+            // FIXME Провери за всеки един вид HeroActionType и изведи подходящо съобщение за него
             if (action)
             {
                 Console.WriteLine("You fight with " + opponent.Name + "you have" + myHero.Power +
                     "power left"  + myHero.Gold + 
                     "and your experiance is" + myHero.Experience);
                 Console.WriteLine();
-            }
-          else
-            {
-                Console.WriteLine("You loose the game");
             }
         }
 

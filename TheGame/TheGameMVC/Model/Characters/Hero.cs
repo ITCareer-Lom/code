@@ -156,7 +156,7 @@ namespace TheGameMVC.Model.Characters
             }
         }
 
-        public bool Fight(Enemy opponent)
+        public bool Fight(Enemy opponent) // FIXME Да се направи Fight да извършва действието само 1 път вместо докато 1 не умре
         {
             while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
             {

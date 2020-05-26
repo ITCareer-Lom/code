@@ -82,7 +82,7 @@ namespace TheGameMVC.Model.Game_Engine
             return false;
         }
 
-        internal bool OpponentSelection() // TODO Ники играта избира кой е нашия Opponent, връща дали дали тя ни е избрала противник
+        internal bool OpponentSelection()
         {
             bool selected = false;
             if (CanSelectMove == false)
