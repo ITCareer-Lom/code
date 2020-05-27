@@ -54,7 +54,7 @@ namespace TheGameMVC.Model.Game_Engine
             State = GameState.NotStarted;
         }
 
-        internal void Started()
+        internal void Started() // TEST
         {
             Validate(); // играта започва извикваме Validate
             // определяме CanSelectMove дали началният ход е Съдба или Избор
@@ -63,7 +63,7 @@ namespace TheGameMVC.Model.Game_Engine
             State = GameState.Playing; // състоянето на играта е Playing
         }
 
-        public bool NextMove() /* преминаваме на следващ ход, ако можем
+        public bool NextMove() /* TEST преминаваме на следващ ход, ако можем
             (т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла*/
         {
             if (MyHero.Health == 0)
@@ -82,10 +82,10 @@ namespace TheGameMVC.Model.Game_Engine
             return false;
         }
 
-        internal bool OpponentSelection()
+        internal bool OpponentSelection() // TEST
         {
             bool selected = false;
-            if (CanSelectMove == false)
+            if (!CanSelectMove)
             {
                 bool enemyIsSelected = random.Next(2) == 1; // true = enemy | false = helper
                 if (enemyIsSelected)
@@ -101,7 +101,7 @@ namespace TheGameMVC.Model.Game_Engine
             return selected;
         }
 
-        public bool Play(HeroActionType action) // изиграваме хода и определяме какъв е резултата
+        public bool Play(HeroActionType action) // TEST изиграваме хода и определяме какъв е резултата
         {
             bool success = true;
             switch (action)
@@ -116,7 +116,7 @@ namespace TheGameMVC.Model.Game_Engine
             return success;
         }
 
-        public bool NextLevel() // преминаваме на следващо ниво(и връща дали е възможно)
+        public bool NextLevel() // TEST преминаваме на следващо ниво(и връща дали е възможно)
         {
             if (!LastLevel() && CurrentLevel.IsCompleted(MyHero))
             {
@@ -128,7 +128,7 @@ namespace TheGameMVC.Model.Game_Engine
             return !LastLevel();
         }
 
-        void Validate() // проверка дали е валидна, ако не - хвърляме изключение 
+        void Validate() // TEST проверка дали е валидна, ако не - хвърляме изключение 
         {
             if (MyHero == null) // да имаме избран герой 
             {

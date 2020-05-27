@@ -78,7 +78,7 @@ namespace TheGameMVC.Controller
                         HeroActionType action = display.SelectHeroAction();
 
                         // съобщаваме какво действие ще се извърши, срещу кого и т.н.
-                        display.ShowHeroAction(action, game.Opponent);
+                        display.ShowHeroAction(game.MyHero, action, game.Opponent);
 
                         // изиграваме хода и определяме какъв е резултата
                         bool success = game.Play(action);

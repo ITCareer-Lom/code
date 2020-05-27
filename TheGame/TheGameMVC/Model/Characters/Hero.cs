@@ -13,7 +13,7 @@ namespace TheGameMVC.Model.Characters
         {
         }
 
-        // победили сме някакъв противник
+        // TEST победили сме някакъв противник
         public override void WonVictoryOver(Creature victim)
         {
             base.WonVictoryOver(victim);
@@ -59,7 +59,7 @@ namespace TheGameMVC.Model.Characters
             return result;
         }
 
-        public void Validate()
+        public void Validate() // TEST
         {
             //дали силата е до 50!
             if (Power <= 0 || Power > 50)
@@ -156,7 +156,7 @@ namespace TheGameMVC.Model.Characters
             }
         }
 
-        public bool Fight(Enemy opponent) // FIXME Да се направи Fight да извършва действието само 1 път вместо докато 1 не умре
+        public bool Fight(Enemy opponent) // TEST
         {
             while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
             {
@@ -170,7 +170,7 @@ namespace TheGameMVC.Model.Characters
             return success;
         }
 
-        public bool Deal(Helper seller) // търгуваме с някой         
+        public bool Deal(Helper seller) // TEST търгуваме с някой         
         {
             if (Gold < seller.Price)
                 return false;  // ако не ни стигат парите - чао

@@ -35,10 +35,10 @@ namespace TheGameMVC.Model.Characters
             return Health <= 0;
         }
 
-        public virtual void WonVictoryOver(Creature victim) // какво става като победи друг            
+        public virtual void WonVictoryOver(Creature victim) // TEST какво става като победи друг            
         {
-            Gold += victim.Gold;
-            victim.Gold = 0;
+            Gold += victim.Gold; 
+            victim.Gold = 0; 
             foreach (Item item in victim.Items)
             {
                 if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
@@ -54,7 +54,7 @@ namespace TheGameMVC.Model.Characters
             return false;
         }
 
-        public void AcquireItem(Item item) // придобиваме предмет
+        public void AcquireItem(Item item) // TEST придобиваме предмет
         {
             Items.Add(item); // добавя се към нашите Items
             switch(item.Type)
@@ -72,7 +72,7 @@ namespace TheGameMVC.Model.Characters
             }
         }
 
-        public void LoseItem(Item item) // разделяме се с предмет
+        public void LoseItem(Item item) // TEST разделяме се с предмет
         {
             Items.Remove(item); // изтрива се от нашите Items
             switch (item.Type)
@@ -90,7 +90,7 @@ namespace TheGameMVC.Model.Characters
             }
         }
 
-        void Validate() //проверка дали е валидно, ако не - хвърляме изключение
+        void Validate() // TEST проверка дали е валидно, ако не - хвърляме изключение
         {
             if (Name == "") // да има име на съществото и то да е валидно име за играта
                 throw new ArgumentException("The Creature has no name.");

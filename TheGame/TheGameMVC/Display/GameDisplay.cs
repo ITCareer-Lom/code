@@ -110,31 +110,54 @@ namespace TheGameMVC.Display
             Console.WriteLine();
         }
 
-        internal HeroActionType SelectHeroAction()
+        public HeroActionType SelectHeroAction()
         {
-            throw new NotImplementedException(); // TODO Да даде на човека избор между всички HeroTypeAction
+            Console.WriteLine("Select what you want to do: (write the number before the action)");
+            Console.WriteLine("1. Skip");
+            Console.WriteLine("2. Fight");
+            Console.WriteLine("3. Deal");
+
+            int action = 1;
+            do
+            {
+                action = int.Parse(Console.ReadLine());
+            } while (action < 0 || action > 4);
+
+            switch (action)
+            {
+                case 1:
+                    return HeroActionType.Skip;
+                case 2:
+                    return HeroActionType.Fight;
+                case 3:
+                    return HeroActionType.Deal;
+            }
+
+            // default case
+            throw new GameStoppedException();
         }
 
-        public void ShowHeroAction(HeroActionType action, Creature opponent)
+        public void ShowHeroAction(Hero hero, HeroActionType action, Creature opponent)
         {
-
-            // FIXME Провери за всеки един вид HeroActionType и изведи подходящо съобщение за него
-            if (action)
+            switch (action)
             {
-                Console.WriteLine("You fight with " + opponent.Name + "you have" + myHero.Power +
-                    "power left"  + myHero.Gold + 
-                    "and your experiance is" + myHero.Experience);
-                Console.WriteLine();
+                case HeroActionType.Skip:
+                    Console.WriteLine($"You skipped the {opponent.Name}");
+                    break;
+                case HeroActionType.Fight:
+                    Console.WriteLine($"You fight with " + opponent.Name + "you have" + Game.MyHero.Power +
+                    "power left" + Game.MyHero.Gold +
+                    " gold and your experiance is" + Game.MyHero.Experience);
+                    break;
+                case HeroActionType.Deal:
+                    Console.WriteLine($"You deal with {opponent.Name}");
+                    break;
+                case HeroActionType.Speak:
+                    Console.WriteLine($"You speak with {opponent.Name}");
+                    break;
+                default:
+                    break;
             }
-            if (action == destiny)
-            {
-                Console.WriteLine("You are on turn Destiny. Let`s start the game");
-            }
-            else (action == choice);
-                    {
-                Console.WriteLine("You are on turn Choice. Let`s start the game");
-
-                    }
         }
 
         public void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
