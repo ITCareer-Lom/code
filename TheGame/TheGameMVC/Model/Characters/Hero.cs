@@ -158,7 +158,7 @@ namespace TheGameMVC.Model.Characters
 
         public bool Fight(Enemy opponent) // TEST
         {
-            while (opponent.Health > 0 || Health > 0) // това продължава, докато един от двамата не умре 
+            while (opponent.Health > 0 && Health > 0) // това продължава, докато един от двамата не умре 
             {
                 opponent.Health -= Power; // бием се с някой намалява victim.Health със нашия Power 
                 Health -= opponent.Power;

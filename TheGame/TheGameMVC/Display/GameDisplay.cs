@@ -145,15 +145,12 @@ namespace TheGameMVC.Display
                     Console.WriteLine($"You skipped the {opponent.Name}");
                     break;
                 case HeroActionType.Fight:
-                    Console.WriteLine($"You fight with " + opponent.Name + "you have" + Game.MyHero.Power +
-                    "power left" + Game.MyHero.Gold +
-                    " gold and your experiance is" + Game.MyHero.Experience);
+                    Console.WriteLine($"You fight with " + opponent.Name + " you have " + Game.MyHero.Power +
+                    " power left " + Game.MyHero.Gold +
+                    " gold and your experiance is " + Game.MyHero.Experience);
                     break;
                 case HeroActionType.Deal:
                     Console.WriteLine($"You deal with {opponent.Name}");
-                    break;
-                case HeroActionType.Speak:
-                    Console.WriteLine($"You speak with {opponent.Name}");
                     break;
                 default:
                     break;

@@ -22,8 +22,7 @@ namespace TheGameMVC.Model.Game_Engine
     {
         Skip = 0,
         Fight = 1,
-        Deal = 2,
-        Speak = 3
+        Deal = 2
     }
 
     public class Game
@@ -66,7 +65,7 @@ namespace TheGameMVC.Model.Game_Engine
         public bool NextMove() /* TEST преминаваме на следващ ход, ако можем
             (т.е.ако не сме убити, ако не сме завършили и т.н.), иначе прекъсва цикъла*/
         {
-            if (MyHero.Health == 0)
+            if (MyHero.Health <= 0)
                 State = GameState.GameOver;
             else if (CurrentLevel.IsCompleted(MyHero) && LastLevel())
                 State = GameState.GameCompleted;
@@ -101,6 +100,7 @@ namespace TheGameMVC.Model.Game_Engine
             return selected;
         }
 
+        // FIXME ако се избере злодей да не може да правим сделка с него, а когато се избере добряк да не може да се бием с него
         public bool Play(HeroActionType action) // TEST изиграваме хода и определяме какъв е резултата
         {
             bool success = true;
