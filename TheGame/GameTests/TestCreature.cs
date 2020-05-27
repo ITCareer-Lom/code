@@ -16,10 +16,10 @@ namespace GameTests
             // тестова ситуация
             const int MyGold = 50;
             var hero = new Hero() { Name = "Knight", Gold = 0 };
-            var victim = new Enemy() { Name = "Zombie", Gold = MyGold };
+           // var victim = new Enemy() { Name = "Zombie", Gold = MyGold };
 
             // извикване на метода
-            hero.WonVictoryOver(victim);
+           // hero.WonVictoryOver(victim);
 
             // проверка дали е коректна ситуацията
             Assert.That(hero.Gold, Is.EqualTo(MyGold), "On victory gold of the winner does not increase");
