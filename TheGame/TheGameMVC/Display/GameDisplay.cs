@@ -126,6 +126,15 @@ namespace TheGameMVC.Display
                     "and your experiance is" + myHero.Experience);
                 Console.WriteLine();
             }
+            if (action == destiny)
+            {
+                Console.WriteLine("You are on turn Destiny. Let`s start the game");
+            }
+            else (action == choice);
+                    {
+                Console.WriteLine("You are on turn Choice. Let`s start the game");
+
+                    }
         }
 
         public void ShowHeroActionResult(HeroActionType action, Creature opponent, bool success)
