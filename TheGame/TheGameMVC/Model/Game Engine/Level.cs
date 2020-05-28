@@ -29,7 +29,7 @@ namespace TheGameMVC.Model.Game_Engine
         //опитът, които е нужен за минаване на нивото
         public int ExperienceNeededToPass()
         {
-            var result = 100 * Id;
+            var result = 100 * (Id + 1);
             return result;
         }
 

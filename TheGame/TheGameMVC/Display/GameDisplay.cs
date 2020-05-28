@@ -74,13 +74,14 @@ namespace TheGameMVC.Display
 
         internal Creature SelectOpponent()
         {
-            List<Creature> oponents = new List<Creature>();
-            oponents.AddRange(Game.CurrentLevel.Enemies);
-            oponents.AddRange(Game.CurrentLevel.Helpers);
+            List<Creature> opponents = new List<Creature>();
+            opponents.AddRange(Game.CurrentLevel.Enemies);
+            opponents.AddRange(Game.CurrentLevel.Helpers);
+            
             Console.WriteLine("Choose someone you want to go to: ");
 
             Console.WriteLine("0 End Game");
-            ShowCreatures(oponents);
+            ShowEmenisAndHelpers(Game.CurrentLevel.Enemies,Game.CurrentLevel.Helpers);
 
             int chosenOponent;
             do
@@ -91,7 +92,7 @@ namespace TheGameMVC.Display
                 {
                     throw new GameStoppedException();
                 }
-                else if (chosenOponent < 1 || chosenOponent > oponents.Count)
+                else if (chosenOponent < 1 || chosenOponent > opponents.Count)
                 {
                     Console.WriteLine("Please choose an existing opponent!");
                     chosenOponent = int.Parse(Console.ReadLine());
@@ -99,7 +100,7 @@ namespace TheGameMVC.Display
                 else break;
             } while (true); 
 
-            return oponents[chosenOponent - 1];
+            return opponents[chosenOponent - 1];
         }
 
         public void ShowOpponent(Creature opponent)
@@ -145,8 +146,8 @@ namespace TheGameMVC.Display
                     Console.WriteLine($"You skipped the {opponent.Name}");
                     break;
                 case HeroActionType.Fight:
-                    Console.WriteLine($"You fight with " + opponent.Name + " you have " + Game.MyHero.Power +
-                    " power left " + Game.MyHero.Gold +
+                    Console.WriteLine($"You fight with " + opponent.Name + " you have " + Game.MyHero.Health +
+                    " health left " + Game.MyHero.Power + " power, " + Game.MyHero.Gold +
                     " gold and your experiance is " + Game.MyHero.Experience);
                     break;
                 case HeroActionType.Deal:
@@ -235,17 +236,26 @@ namespace TheGameMVC.Display
             int count = number-1;
             return count;
         }
+
        //показва всички герой 
-        /*public int ShowHeroes(IEnumerable<Creature> heroes)
+        public int ShowEmenisAndHelpers(IEnumerable<Creature> enemies, IEnumerable<Creature> helpers)
         {
             int number = 1;
-            foreach (var hero in heros)
+            Console.WriteLine("Enemies:");
+            foreach (var enemy in enemies)
             {
-                Console.WriteLine($"{number} {heroes}");
+                Console.WriteLine($"{number} {enemy}");
+                number++;
+            }
+            Console.WriteLine();
+            Console.WriteLine("Helpers:");
+            foreach (var helper in helpers)
+            {
+                Console.WriteLine($"{number} {helper}");
                 number++;
             }
             int count = number - 1;
-            retrun count;
-        }*/
+            return count;
+        }
     }
 }

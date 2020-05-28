@@ -39,11 +39,12 @@
         static void Main(string[] args)
         {
             Deserializer ds = new Deserializer();
-            using (var context = new GameContext())
+            var map = JsonToMap("plain");
+            /*using (var context = new GameContext())
             {
                 ResetDatabase(context, shouldDropDatabase: true);
 
-                var map = JsonToMap("plain");
+                
 
                 var maps = new List<Map>();
                 maps.Add(map);
@@ -55,8 +56,9 @@
                     ImportEntities(context, level.Enemies, level.Helpers);
                 }
 
-                ConsoleGameController controler = new ConsoleGameController(map);
-            }
+                
+            }*/
+            ConsoleGameController controler = new ConsoleGameController(map);
         }
 
         private static void ImportMap(GameContext context, List<Map> maps, List<Hero> heroes, List<Level> levels)
