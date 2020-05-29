@@ -76,15 +76,22 @@ namespace TheGameMVC.Controller
                         display.ShowOpponent(game.Opponent);
 
                         // избираме какво действие ще извърши нашия герой
-                        HeroActionType action = display.SelectHeroAction();
+                        HeroActionType action = display.SelectHeroAction(game.Opponent);
 
                         // съобщаваме какво действие ще се извърши, срещу кого и т.н.
                         display.ShowHeroAction(game.MyHero, action, game.Opponent);
 
                         // изиграваме хода и определяме какъв е резултата
                         bool success = game.Play(action);
-                        if (success && game.Opponent is Enemy)
-                            game.CurrentLevel.Enemies.Remove(game.Opponent as Enemy);
+
+                        // премахваме вече победен злодей или добряк, с който сме направили сделка
+                        if (success)
+                        {
+                            if (game.Opponent is Enemy && action is HeroActionType.Fight)
+                                game.CurrentLevel.Enemies.Remove(game.Opponent as Enemy);
+                            else if(game.Opponent is Helper && action is HeroActionType.Deal)
+                                game.CurrentLevel.Helpers.Remove(game.Opponent as Helper);
+                        }
 
                         // съобщаваме резултата от играта 
                         display.ShowHeroActionResult(action, game.Opponent, success);

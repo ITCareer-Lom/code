@@ -79,8 +79,9 @@ namespace TheGameMVC.Display
             opponents.AddRange(Game.CurrentLevel.Helpers);
             
             Console.WriteLine("Choose someone you want to go to: ");
-
+            Console.WriteLine();
             Console.WriteLine("0 End Game");
+            Console.WriteLine();
             ShowEmenisAndHelpers(Game.CurrentLevel.Enemies,Game.CurrentLevel.Helpers);
 
             int chosenOponent;
@@ -111,30 +112,32 @@ namespace TheGameMVC.Display
             Console.WriteLine();
         }
 
-        public HeroActionType SelectHeroAction()
+        public HeroActionType SelectHeroAction(Creature opponent)
         {
             Console.WriteLine("Select what you want to do: (write the number before the action)");
             Console.WriteLine("1. Skip");
-            Console.WriteLine("2. Fight");
-            Console.WriteLine("3. Deal");
-
+            if (opponent is Enemy)
+                Console.WriteLine("2. Fight");
+            if (opponent is Helper)
+                Console.WriteLine("2. Deal");
+            
             int action = 1;
             do
             {
                 action = int.Parse(Console.ReadLine());
-            } while (action < 0 || action > 4);
+            } while (action < 0 || action > 3);
 
             switch (action)
             {
                 case 1:
                     return HeroActionType.Skip;
                 case 2:
-                    return HeroActionType.Fight;
-                case 3:
-                    return HeroActionType.Deal;
+                        if(opponent is Enemy)
+                            return HeroActionType.Fight;
+                        else
+                            return HeroActionType.Deal;
+                    
             }
-
-            // default case
             throw new GameStoppedException();
         }
 
@@ -144,14 +147,15 @@ namespace TheGameMVC.Display
             {
                 case HeroActionType.Skip:
                     Console.WriteLine($"You skipped the {opponent.Name}");
+                    Console.WriteLine();
                     break;
                 case HeroActionType.Fight:
-                    Console.WriteLine($"You fight with " + opponent.Name + " you have " + Game.MyHero.Health +
-                    " health left " + Game.MyHero.Power + " power, " + Game.MyHero.Gold +
-                    " gold and your experiance is " + Game.MyHero.Experience);
+                    Console.WriteLine($"You fight with " + opponent.Name);
+                    Console.WriteLine();
                     break;
                 case HeroActionType.Deal:
                     Console.WriteLine($"You deal with {opponent.Name}");
+                    Console.WriteLine();
                     break;
                 default:
                     break;
@@ -163,10 +167,12 @@ namespace TheGameMVC.Display
             if (success)
             {
                 Console.WriteLine("Meeting with " + opponent.Name + " was successfull");
+                Console.WriteLine();
             }
             else
             {
                 Console.WriteLine("Meeting with " + opponent.Name + " was not successfull");
+                Console.WriteLine();
             }
         }
 
