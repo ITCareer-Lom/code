@@ -27,7 +27,7 @@ namespace GameTests
         }
 
         [Test]
-        public void ValidateIfPowerIsInRange()
+        public void TestValidateIfPowerIsInRange()
         {
             // тестова ситуация
             var hero = new Hero() { Name = "Knight", Power = 50 };
@@ -35,11 +35,11 @@ namespace GameTests
             hero.Validate();
 
             // проверка дали е коректна ситуацията
-            Assert.That(hero.Experience, Is.EqualTo(50), "Hero's power has to be in range to 50.");
+            Assert.That(hero.Power, Is.EqualTo(50), "Hero's power has to be in range to 50.");
         }
 
         [Test]
-        public void ValidateIfHealthIsInRange()
+        public void TestValidateIfHealthIsInRange()
         {
             // тестова ситуация
             var hero = new Hero() { Name = "Knight", Health = 100 };
@@ -47,7 +47,7 @@ namespace GameTests
             hero.Validate();
 
             // проверка дали е коректна ситуацията
-            Assert.That(hero.Health, Is.EqualTo(100), "Hero's health has to be in range to 50.");
+            Assert.That(hero.Health, Is.EqualTo(100), "Hero's health has to be in range to 100.");
         }
 
        [Test]
