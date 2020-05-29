@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -106,6 +106,22 @@ namespace GameTests
 
             // проверка дали е коректна ситуацията
             Assert.That(hero.Health, Is.EqualTo(2 * SomeHealth), "Hero's health doesn't increase on after beating victim with health items");
+        }
+
+         [Test]
+        public void TestWonVictoryOverAllowedItemIncreaseGold()
+        {
+            // тестова ситуация
+            const int VictimGold = 100;
+            const int HeroGold = 50;
+            var hero = new Hero() { Name = "Knight", Gold = HeroGold };
+            var victim = new Enemy() { Name = "Zombie", Gold = VictimGold };
+
+            // извикване на метода
+            hero.WonVictoryOver(victim);
+
+            // проверка дали е коректна ситуацията
+            Assert.That(hero.Gold, Is.EqualTo(HeroGold + VictimGold), "Hero's gold doesn't increase after beating victim");
         }
     }
 }
