@@ -39,12 +39,14 @@ namespace TheGameMVC.Model.Characters
         {
             Gold += victim.Gold; 
             victim.Gold = 0; 
-            foreach (Item item in victim.Items)
+            for(var i = 0; i<victim.Items.Count; i++)
             {
+                var item = victim.Items[i];
                 if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
                 {
                     AcquireItem(item);
                     victim.LoseItem(item);
+                    i--;
                 }
             }
         }

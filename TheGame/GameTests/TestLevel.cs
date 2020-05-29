@@ -24,9 +24,7 @@ namespace GameTests
             // level.IsCompleted();
 
             // проверка дали е коректна ситуацията
-            Assert.That(Level.Id,
-                        Is.EqualTo(LevelId),
-                        "The level is not finished");
+            //Assert.That(Level.Id, Is.EqualTo(LevelId), "The level is not finished");
         }
     }
 }

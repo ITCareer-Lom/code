@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheGameMVC.Display;
 using TheGameMVC.Model;
+using TheGameMVC.Model.Characters;
 using TheGameMVC.Model.Game_Engine;
 
 namespace TheGameMVC.Controller
@@ -82,8 +83,8 @@ namespace TheGameMVC.Controller
 
                         // изиграваме хода и определяме какъв е резултата
                         bool success = game.Play(action);
-
-                        // TODO Когато героя умре играта продължава, защото никъде не проверяме дали е жив или мъртъв.
+                        if (success && game.Opponent is Enemy)
+                            game.CurrentLevel.Enemies.Remove(game.Opponent as Enemy);
 
                         // съобщаваме резултата от играта 
                         display.ShowHeroActionResult(action, game.Opponent, success);

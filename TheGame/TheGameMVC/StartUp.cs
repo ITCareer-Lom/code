@@ -39,7 +39,7 @@
         static void Main(string[] args)
         {
             Deserializer ds = new Deserializer();
-            var map = JsonToMap("plain");
+            var map = JsonToMap("V Map");
             /*using (var context = new GameContext())
             {
                 ResetDatabase(context, shouldDropDatabase: true);
