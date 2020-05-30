@@ -42,7 +42,7 @@
             game.MyHero = new Hero() { Health = 10, Power = 10, Experience = 0 };
             game.Opponent = new Creature() { Health = 100, Power = 100, Experience = 0 };
 
-            game.Play(HeroActionType.Fight);
+            // game.Play(HeroActionType.Fight);
 
             Deserializer ds = new Deserializer();
             var map = JsonToMap("V Map");

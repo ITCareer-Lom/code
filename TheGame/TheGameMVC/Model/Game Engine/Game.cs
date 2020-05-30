@@ -99,8 +99,7 @@ namespace TheGameMVC.Model.Game_Engine
             }
             return selected;
         }
-
-        // FIXME ако се избере злодей да не може да правим сделка с него, а когато се избере добряк да не може да се бием с него
+        
         public bool Play(HeroActionType action) // TEST изиграваме хода и определяме какъв е резултата
         {
             bool success = true;
