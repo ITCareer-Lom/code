@@ -53,48 +53,46 @@ namespace GameTests
         public void TestFightDecreaseVictimPower()
         {
             // тестова ситуация
-            const int heroHealth = 50;
-            const int victimPower = 100;
-            var hero = new Hero() { Name = "Knight", Gold = 0, Health = 100, Power = heroHealth };
-            var victim = new Enemy() { Name = "Zombie", Gold = 0, Power = victimPower };
+            var hero = new Hero() { Name = "Knight", Gold = 0, Health = 100, Power = 50 };
+            var victim = new Enemy() { Name = "Zombie", Gold = 0, Health = 200 ,Power = 100 };
             
             // извикване на метода
             hero.Fight(victim);
 
             // проверка дали е коректна ситуацията
-            Assert.That(victim.Power, Is.EqualTo(victimPower - heroHealth), "Victim's power does not decrease after being attacked");
+            Assert.That(victim.Power, Is.EqualTo(victim.Health - hero.Power), "Victim's power does not decrease after being attacked");
         }
 
         [Test]
         public void TestDealIsMadeDecreaseHeroGold()
         {
             // тестова ситуация
-            const int heroGold = 200;
-            const int sellerPrice = 100;
-            var hero = new Hero() { Name = "Knight", Gold = heroGold };
-            var seller = new Helper() { Name = "Seller", Price = sellerPrice };
+            //const int heroGold = 200;
+            //const int sellerPrice = 100;
+            var hero = new Hero() { Name = "Knight", Gold = 200};
+            var seller = new Helper() { Name = "Seller", Price = 100};
 
             // извикване на метода
             hero.Deal(seller);
 
             // проверка дали е коректна ситуацията
-            Assert.That(hero.Gold, Is.EqualTo(heroGold - sellerPrice ), "Hero's gold does not decrease after deal");
+            Assert.That(hero.Gold, Is.EqualTo(hero.Gold - seller.Price), "Hero's gold does not decrease after deal");
         }
 
         [Test]
         public void TestDealIsMadeIncreareSellerGold()
         {
             // тестова ситуация
-            const int heroGold = 200;
-            const int sellerPrice = 100;
-            var hero = new Hero() { Name = "Knight", Gold = heroGold };
-            var seller = new Helper() { Name = "Seller", Price = sellerPrice };
+            //const int heroGold = 200;
+            //const int sellerPrice = 100;
+            var hero = new Hero() { Name = "Knight", Gold = 200 };
+            var seller = new Helper() { Name = "Seller", Price = 100 };
 
             // извикване на метода
             hero.Deal(seller);
 
             // проверка дали е коректна ситуацията
-            Assert.That(seller.Gold, Is.EqualTo(heroGold + sellerPrice ), "Seller's gold does not increase after deal");
+            Assert.That(seller.Gold, Is.EqualTo(hero.Gold + seller.Price ), "Seller's gold does not increase after deal");
         }
     }
 }

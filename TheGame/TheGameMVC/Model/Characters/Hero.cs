@@ -80,7 +80,7 @@ namespace TheGameMVC.Model.Characters
             //дали силата е до 50!
             if (Power <= 0 || Power > 50)
             {
-                throw new ArgumentOutOfRangeException("Power have to be in range (0, 50]");
+                throw new ArgumentException("Power have to be in range (0, 50]");
             }
 
 

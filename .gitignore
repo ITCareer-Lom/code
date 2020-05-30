@@ -343,3 +343,4 @@ healthchecksdb
 # Other folders
 obj
 Debug
+/TheGame/GameTests/TestGame.cs
