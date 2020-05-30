@@ -45,8 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ConsoleGameController.cs" />
-    <Compile Include="Database\Configuration.cs" />
-    <Compile Include="Database\DataProcessor\Deserializer.cs" />
     <Compile Include="Database\GameContext.cs" />
     <Compile Include="Display\GameDisplay.cs" />
     <Compile Include="Model\Characters\Creature.cs" />

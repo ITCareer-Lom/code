@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace TheGameMVC.Model.Game_Engine
 {
     public class Level
     {
+        [Key]
+        public int LevelId { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Enemy> Enemies { get; set; }
