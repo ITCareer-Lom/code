@@ -28,31 +28,47 @@ namespace TheGameMVC.Model.Characters
             switch (Name)
             {
                 case "Knight":
-                    result = (item.Name == "Sword") ||
-                             (item.Name == "Shield"); break;
+                    result = (item.Name == "Axe") ||
+                             (item.Name == "Sword") ||
+                             (item.Name == "Shield") ||
+                             (item.Name == "Food") ||
+                             (item.Name == "Herbs"); break;
                 case "Magician":
                     result = (item.Name == "Magic wand") ||
                              (item.Name == "Holy water") ||
-                             (item.Name == "Magic book"); break;
+                             (item.Name == "Magic book") ||
+                             (item.Name == "Food") ||
+                             (item.Name == "Herbs"); break;
                 case "Dwarf":
-                    result = (item.Name == "Axe") ||
+                    result = (item.Name == "Magic wand") ||
+                             (item.Name == "Axe") ||
                              (item.Name == "Sword") ||
                              (item.Name == "Armor") ||
                              (item.Name == "Herbs"); break;
                 case "Princess":
-                    result = (item.Name == "Sword") ||
-                             (item.Name == "Holy water"); break;
+                    result = (item.Name == "Magic wand") ||
+                             (item.Name == "Sword") ||
+                             (item.Name == "Holy water") ||
+                             (item.Name == "Shield") ||
+                             (item.Name == "Gold"); break;
                 case "Villager":
-                    result = (item.Name == "Gun"); break;
+                    result = (item.Name == "Axe") ||
+                             (item.Name == "Gun") ||
+                             (item.Name == "Shield") ||
+                             (item.Name == "Gold") ||
+                             (item.Name == "Holy water"); break;
                 case "Turtle":
                     result = (item.Name == "Holy water") ||
                              (item.Name == "Food") ||
-                             (item.Name == "Gold"); break;
+                             (item.Name == "Gold") ||
+                             (item.Name == "Gun") ||
+                             (item.Name == "Herbs"); break;
                 case "Goddes":
                     result = (item.Name == "Axe") ||
                              (item.Name == "Sword") ||
                              (item.Name == "Armor") ||
-                             (item.Name == "Gun"); break;
+                             (item.Name == "Gun") ||
+                             (item.Name == "Holy water"); break;
 
                 default: break;
             }
@@ -179,13 +195,15 @@ namespace TheGameMVC.Model.Characters
                 // преглеждаме дали има предмети които можем да притежаваме
                 // получаваме един или повече от Items(с AcquireItem и LoseItem) от seller
                 var hasBoughtItems = false;
-                foreach (Item i in seller.Items)
+                for (var i = 0; i < seller.Items.Count; i++)
                 {
-                    if (CanHaveItem(i))
+                    var item = seller.Items[i];
+                    if (CanHaveItem(item)) // първо проверяваме дали може да го притежаваме с CanHaveItem
                     {
-                        AcquireItem(i);
-                        seller.LoseItem(i);
+                        AcquireItem(item);
+                        seller.LoseItem(item);
                         hasBoughtItems = true;
+                        i--;
                     }
                 }
                 if (hasBoughtItems)
