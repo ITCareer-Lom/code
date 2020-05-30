@@ -53,7 +53,7 @@ namespace TheGameMVC.Model.Game_Engine
             State = GameState.NotStarted;
         }
 
-        internal void Started() // TEST
+        public void Started() // TEST
         {
             Validate(); // играта започва извикваме Validate
             // определяме CanSelectMove дали началният ход е Съдба или Избор
@@ -81,7 +81,7 @@ namespace TheGameMVC.Model.Game_Engine
             return false;
         }
 
-        internal bool OpponentSelection() // TEST
+        public bool OpponentSelection() // TEST
         {
             bool selected = false;
             if (!CanSelectMove)
