@@ -69,14 +69,14 @@ namespace GameTests
             // тестова ситуация
             //const int heroGold = 200;
             //const int sellerPrice = 100;
-            var hero = new Hero() { Name = "Knight", Gold = 200};
+            var hero = new Hero() { Name = "Knight", Gold = 300};
             var seller = new Helper() { Name = "Seller", Price = 100};
-
+            int heroFinalGold = hero.Gold - seller.Price;
             // извикване на метода
             hero.Deal(seller);
 
             // проверка дали е коректна ситуацията
-            Assert.That(hero.Gold, Is.EqualTo(hero.Gold - seller.Price), "Hero's gold does not decrease after deal");
+            Assert.That(hero.Gold, Is.EqualTo(heroFinalGold), "Hero's gold does not decrease after deal");
         }
 
         [Test]
@@ -87,12 +87,13 @@ namespace GameTests
             //const int sellerPrice = 100;
             var hero = new Hero() { Name = "Knight", Gold = 200 };
             var seller = new Helper() { Name = "Seller", Price = 100 };
+            int sellerFinalGold = seller.Price + seller.Gold;
 
             // извикване на метода
             hero.Deal(seller);
 
             // проверка дали е коректна ситуацията
-            Assert.That(seller.Gold, Is.EqualTo(hero.Gold + seller.Price ), "Seller's gold does not increase after deal");
+            Assert.That(seller.Gold, Is.EqualTo(sellerFinalGold), "Seller's gold does not increase after deal");
         }
     }
 }

@@ -206,7 +206,7 @@ namespace TheGameMVC.Model.Characters
                         i--;
                     }
                 }
-                if (hasBoughtItems)
+                if (!hasBoughtItems)
                 {
                     Gold -= seller.Price;
                     seller.Gold += seller.Price;
