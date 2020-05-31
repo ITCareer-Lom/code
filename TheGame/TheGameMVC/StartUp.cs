@@ -1,32 +1,17 @@
-﻿namespace TheGameMVC
-{
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using Newtonsoft.Json;
-    using TheGameMVC.Controller;
-    using TheGameMVC.Database;
-    using TheGameMVC.Model.Characters;
-    using TheGameMVC.Model.Game_Engine;
-    using System;
-    using TheGameMVC.Database.DataProcessor;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
+using TheGameMVC.Controller;
+using TheGameMVC.Database;
+using TheGameMVC.Model.Characters;
+using TheGameMVC.Model.Game_Engine;
+using System;
 
+namespace TheGameMVC
+{
     public class StartUp
     {
-        private static void ResetDatabase(GameContext context, bool shouldDropDatabase = false)
-        {
-            if (shouldDropDatabase)
-            {
-                context.Database.EnsureDeleted();
-            }
-
-            if (context.Database.EnsureCreated())
-            {
-                return;
-            }
-        }
-
-
         // с програмен код създаваме картата в JSON формат
         static public Map JsonToMap(string mapFileName)
         {
@@ -36,72 +21,44 @@
             return map;
         }
 
+        // записваме картата в JSON format
+        static public void MapToJson(Map map, string mapFileName)
+        {
+            var json = JsonConvert.SerializeObject(map);
+            File.WriteAllText("..\\..\\Maps\\" + mapFileName + ".json", json);
+        }
+
+        // записваме картата в JSON format
+        static public void MapToDb(Map map)
+        {
+            using (var gameContext = new GameContext())
+            {
+                gameContext.ResetDatabase(shouldDropDatabase: true);
+                gameContext.Maps.Add(map);
+                gameContext.SaveChanges();
+            }
+        }
+
+        static public Map DbToMap(int mapNo = 0)
+        {
+            var maps = new List<Map>();
+            using (var gameContext = new GameContext())
+            {
+                maps = gameContext.Maps.ToList();
+            }
+            return maps[mapNo]; 
+        }
+
         static void Main(string[] args)
         {
-           
-            Deserializer ds = new Deserializer();
-            var map = JsonToMap("V Map");
-            using (var context = new GameContext())
-            {
-                ResetDatabase(context, shouldDropDatabase: true);
-
-                
-
-                var maps = new List<Map>();
-                maps.Add(map);
-
-                ImportMap(context, maps, map.Heroes, map.Levels);
-
-                foreach (var level in map.Levels)
-                {
-                    ImportEntities(context, level.Enemies, level.Helpers);
-                }
-
-                
-            }
+            var map = JsonToMap("V Map"); // зареждаме от JSON файл
+            MapToDb(map); // записваме да го има и в базата
+            
+            // или може да заредим карта от базата:
+            //var dbMap = DbToMap();
+            
             ConsoleGameController controler = new ConsoleGameController(map);
         }
 
-        private static void ImportMap(GameContext context, List<Map> maps, List<Hero> heroes, List<Level> levels)
-        {
-            var mapResult =
-                Deserializer.ImportMaps(context,
-                    maps);
-            PrintEntity(mapResult);
-
-            //var heroesResult =
-            //   Deserializer.ImportHeroes(context,
-            //       heroes);
-            //PrintEntity(heroesResult);
-
-            var levelsResult =
-                Deserializer.ImportLevels(context,
-                    levels);
-            PrintEntity(levelsResult);
-        }
-
-        private static void ImportEntities(GameContext context, List<Enemy> enemies, List<Helper> helpers) // List<Item> items
-        {
-            var enemiesResult =
-              Deserializer.ImportEnemies(context,
-                   enemies);
-            PrintEntity(enemiesResult);
-
-            var helpersResult =
-               Deserializer.ImportHelpers(context,
-                   helpers);
-            PrintEntity(helpersResult);
-
-            //var itemsResult =
-            //  Deserializer.ImportItems(context,
-            //      items);
-            //PrintEntity(itemsResult);
-        }
-
-        private static void PrintEntity(string entityOutput)
-        {
-            Console.WriteLine(entityOutput);
-
-        }
     }
 }
