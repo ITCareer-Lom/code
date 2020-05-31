@@ -10,6 +10,6 @@ namespace TheGameMVC.Model.Characters
     // и т.н. за останалите
     public class Enemy : Creature
     {
-        // TODO int LevelId
+
     }
 }

@@ -11,7 +11,6 @@ namespace TheGameMVC.Model.Characters
         Power = 0,
         Health = 1,
         Gold = 2
-
     }
 
     // Sword - меч
@@ -34,6 +33,6 @@ namespace TheGameMVC.Model.Characters
         public int ItemId { get; set; }
         public string Name { get; set; }
         public int UpgradeValue { get; set; }
-        public ItemType Type { get; set; }        
+        public ItemType Type { get; set; }
     } 
 }

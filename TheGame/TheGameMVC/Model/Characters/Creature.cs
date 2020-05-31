@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheGameMVC.Model.Game_Engine;
 
 namespace TheGameMVC.Model.Characters
 {
@@ -10,12 +12,15 @@ namespace TheGameMVC.Model.Characters
     {
         public int Id { get; set; }
         public string Name { get; set; } // името на съществото
+        [NotMapped]
         public int Health { get; set; } // здравето му
         public int Power { get; set; } // силата му
         public int Experience { get; set; } // опита, който има
         public int Gold { get; set; } // парите му
-        public List<Item> Items { get; set; }  // предметите, които притежава
-        public string Message { get; set; } // съобщението, което носи това същество
+        public virtual List<Item> Items { get; set; }  // предметите, които притежава
+        [ForeignKey("LevelId")]
+        public virtual int? LevelId { get; set; }
+        public virtual Level Level { get; set; }
 
         public Creature() : this("", 0, 0, 0, "") { }
 
@@ -27,7 +32,6 @@ namespace TheGameMVC.Model.Characters
             Experience = experience;
             Gold = gold;
             Items = new List<Item>();
-            Message = message;
         }
 
         bool IsDead() // дали е умрял

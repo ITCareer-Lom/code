@@ -96,12 +96,12 @@
       "Items": [
         {
           "Name": "Sword",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 50
         },
         {
           "Name": "Shield",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 50
         }
       ]
@@ -114,17 +114,17 @@
       "Items": [
         {
           "Name": "Magic wand",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 55
         },
         {
           "Name": "Holy water",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 20
         },
         {
           "Name": "Magic book",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 70
         }
       ]
@@ -137,22 +137,22 @@
       "Items": [
         {
           "Name": "Axe",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 70
         },
         {
           "Name": "Sword",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 50
         },
         {
           "Name": "Armor",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 30
         },
         {
           "Name": "Herbs",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 50
         }
       ]
@@ -165,12 +165,12 @@
       "Items": [
         {
           "Name": "Sword",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 50
         },
         {
           "Name": "Holy water",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 20
         }
       ]
@@ -183,7 +183,7 @@
       "Items": [
         {
           "Name": "Gun",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 65
         }
       ]
@@ -196,17 +196,17 @@
       "Items": [
         {
           "Name": "Holy water",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 20
         },
         {
           "Name": "Food",
-          "ItemType": "Health",
+          "Type": "Health",
           "UpgradeValue": 25
         },
         {
           "Name": "Gold",
-          "ItemType": "Gold",
+          "Type": "Gold",
           "UpgradeValue": 400
         }
       ]
@@ -219,22 +219,22 @@
       "Items": [
         {
           "Name": "Axe",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 70
         },
         {
           "Name": "Sword",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 50
         },
         {
           "Name": "Armor",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 30
         },
         {
           "Name": "Gun",
-          "ItemType": "Power",
+          "Type": "Power",
           "UpgradeValue": 65
         }
       ]

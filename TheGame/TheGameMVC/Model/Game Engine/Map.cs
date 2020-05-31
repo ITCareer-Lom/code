@@ -11,14 +11,11 @@ namespace TheGameMVC.Model.Game_Engine
     public class Map
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        // добавени от Hero
-        public List<string> heroes = new List<string>();
-
+        public string Name { get; set; }     
         // нивата в картата
-        public List<Level> Levels { get; set; }
+        public virtual List<Level> Levels { get; set; }
         // героите, от които можем да избираме
-        public List<Hero> Heroes { get; set; }
+        public virtual List<Hero> Heroes { get; set; }
 
         public Map()
         {

@@ -33,17 +33,17 @@
           "Items": [
             {
               "Name": "Magic book",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             }
           ]
@@ -56,17 +56,17 @@
           "Items": [
             {
               "Name": "Gold",
-              "ItemType": "Gold",
+              "Type": "Gold",
               "UpgradeValue": 400
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Gun",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 65
             }
           ]
@@ -105,17 +105,17 @@
           "Items": [
             {
               "Name": "Sword",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 50
             },
             {
               "Name": "Shield",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             }
           ]
@@ -128,17 +128,17 @@
           "Items": [
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             },
             {
               "Name": "Magic wand",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 55
             }
           ]
@@ -151,17 +151,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Axe",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Magic wand",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 55
             }
           ]
@@ -174,17 +174,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             }
           ]
@@ -229,17 +229,17 @@
           "Items": [
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             },
             {
               "Name": "Magic wand",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 55
             }
           ]
@@ -252,17 +252,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             }
           ]
@@ -275,17 +275,17 @@
           "Items": [
             {
               "Name": "Magic book",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             }
           ]
@@ -298,17 +298,17 @@
           "Items": [
             {
               "Name": "Gold",
-              "ItemType": "Gold",
+              "Type": "Gold",
               "UpgradeValue": 400
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Gun",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 65
             }
           ]
@@ -359,17 +359,17 @@
           "Items": [
             {
               "Name": "Sword",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 50
             },
             {
               "Name": "Shield",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             }
           ]
@@ -382,17 +382,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             }
           ]
@@ -411,17 +411,17 @@
           "Items": [
             {
               "Name": "Magic book",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             }
           ]
@@ -434,17 +434,17 @@
           "Items": [
             {
               "Name": "Gold",
-              "ItemType": "Gold",
+              "Type": "Gold",
               "UpgradeValue": 400
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Gun",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 65
             }
           ]
@@ -501,17 +501,17 @@
           "Items": [
             {
               "Name": "Sword",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 50
             },
             {
               "Name": "Shield",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             }
           ]
@@ -524,17 +524,17 @@
           "Items": [
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             },
             {
               "Name": "Magic wand",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 55
             }
           ]
@@ -547,17 +547,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Food",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 25
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             }
           ]
@@ -570,17 +570,17 @@
           "Items": [
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Axe",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Magic wand",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 55
             }
           ]
@@ -593,17 +593,17 @@
           "Items": [
             {
               "Name": "Magic book",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 70
             },
             {
               "Name": "Herbs",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 50
             },
             {
               "Name": "Armor",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 30
             }
           ]
@@ -616,17 +616,17 @@
           "Items": [
             {
               "Name": "Gold",
-              "ItemType": "Gold",
+              "Type": "Gold",
               "UpgradeValue": 400
             },
             {
               "Name": "Holy water",
-              "ItemType": "Health",
+              "Type": "Health",
               "UpgradeValue": 20
             },
             {
               "Name": "Gun",
-              "ItemType": "Power",
+              "Type": "Power",
               "UpgradeValue": 65
             }
           ]

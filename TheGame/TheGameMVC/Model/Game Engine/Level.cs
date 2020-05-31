@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,12 @@ namespace TheGameMVC.Model.Game_Engine
 {
     public class Level
     {
+        [Key]
+        public int LevelId { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Enemy> Enemies { get; set; }
-        public List<Helper> Helpers { get; set; }
+        public virtual List<Enemy> Enemies { get; set; }
+        public virtual List<Helper> Helpers { get; set; }
 
         // за връзка с таблицата с картата
         public int MapId { get; set; }

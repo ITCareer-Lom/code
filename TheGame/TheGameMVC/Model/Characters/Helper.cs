@@ -8,8 +8,6 @@ namespace TheGameMVC.Model.Characters
 {
     public class Helper : Creature 
     {
-        // TODO int HelperId
-        //public int HelperId { get; set; }
         public int Price { get; set; }
 
         public Helper() : base()
